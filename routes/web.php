@@ -124,6 +124,16 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('routes', 'AdminDetailsController@listRoutes');
     Route::get('active-users', 'AdminDetailsController@activeUsers');
+    Route::resource('events', 'EventController', [
+        'names' => [
+            'index'   => 'events',
+            'create' => 'events.create',
+            'edit' => 'events.edit',
+            'update' => 'events.update',
+        ],
+        'except' => [],
+    ]);
+    Route::model('events', 'Event');
 });
 
 Route::redirect('/php', '/phpinfo', 301);

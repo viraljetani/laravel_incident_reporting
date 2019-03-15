@@ -10,7 +10,7 @@ require('hideshowpassword');
 // var Dropzone = require('dropzone');
 var password = require('password-strength-meter');
 
-window.Vue = require('vue');
+//window.Vue = require('vue');
 
 
 /**
@@ -20,11 +20,11 @@ window.Vue = require('vue');
  */
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('users-count', require('./components/UsersCount.vue'));
+//Vue.component('users-count', require('./components/UsersCount.vue'));
 
-const app = new Vue({
+/* const app = new Vue({
     el: '#app'
-});
+}); */
 
 $.fn.extend({
     toggleText: function(a, b){

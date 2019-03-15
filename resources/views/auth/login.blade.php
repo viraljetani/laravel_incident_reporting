@@ -65,7 +65,7 @@
                             Or Login with
                         </p>
 
-                        @include('partials.socials-icons')
+                        {{-- @include('partials.socials-icons') --}}
 
                     </form>
                 </div>
