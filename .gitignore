@@ -42,6 +42,7 @@ composer.lock
 /storage/logs
 /storage/users
 packages/
+/database/seeds/import
 
 # Debug Files
 npm-debug.log

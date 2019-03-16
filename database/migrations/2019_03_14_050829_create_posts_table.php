@@ -15,8 +15,11 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('unique_record_number',50)->index();
             $table->string('cso_name',120)->index();
             $table->text('location')->nullable();
+            $table->date('post_date');
+            $table->string('post_time');
             $table->integer('post_type_id');
             $table->integer('district_id');
             $table->text('details')->nullable();

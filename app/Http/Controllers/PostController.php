@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Excel;
+use App\imports\PostsImport;
 
 class PostController extends Controller
 {
@@ -14,7 +16,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::with('postType','district')->orderBy('post_date', 'DESC')->orderBy('location')->get();
+
+        return view('posts.index', compact('posts'));
+
     }
 
     /**
@@ -24,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -35,7 +40,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'import_file' => 'required'
+        ]);
+        //$request->hasFile('ex_file')
+        $file = base_path() . '/database/seeds/import/Chisankho Data.xlsx';
+        Excel::import(new PostsImport, $file);
     }
 
     /**

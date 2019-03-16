@@ -134,6 +134,16 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
         'except' => [],
     ]);
     Route::model('events', 'Event');
+    Route::resource('posts', 'PostController', [
+        'names' => [
+            'index'   => 'posts',
+            'create' => 'posts.create',
+            'edit' => 'posts.edit',
+            'update' => 'posts.update',
+        ],
+        'except' => [],
+    ]);
+    Route::model('posts', 'Post');
 });
 
 Route::redirect('/php', '/phpinfo', 301);

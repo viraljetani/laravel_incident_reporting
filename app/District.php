@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class District extends Model
 {
-    //
+    protected $guarded = [];
+
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
 }
