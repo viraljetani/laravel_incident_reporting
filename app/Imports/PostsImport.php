@@ -8,6 +8,7 @@ use App\Post;
 use App\PostType;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\District;
+use Illuminate\Support\Facades\Log;
 
 class PostsImport implements ToCollection
 {
@@ -17,47 +18,54 @@ class PostsImport implements ToCollection
     */
     public function collection(Collection $collection)
     {
+
+        
         $post = [];
         $count = 1;
+        //$recordCount = 0;
         $header = [];
-        foreach($collection as $row)
-        {
+        foreach($collection as $key => $row)
+        { 
+
             if($count==1) {
                 $header = $row->toArray();
                 $count=0;
             }
             else{
-                $post[]=array_combine($header, $row->toArray());
-                //dd($post[0]);
-                $p = Post::withTrashed()->firstOrNew(['unique_record_number'=> $post[0]['Unique Record Number (URN)']]);
-                $p->cso_name = $post[0]['CSO Name']; 
-                $p->location = $post[0]['Location'];
-                $date =  \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($post[0]['Date']);
-                //dd();
-                $p->post_date = $date->format('Y-m-d');
-                $time = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($post[0]['Time']);
-                //$time = $time->format('H:i');
+                $post[] = array_combine($header, $row->toArray());
+                //var_dump($post);
+                //print_r($post[$key-1]); echo "<br><br>"; 
+                if($post[$key-1]['Unique Record Number (URN)']) {
+                    $p = Post::withTrashed()->firstOrNew(['unique_record_number' => intval($post[$key-1]['Unique Record Number (URN)'])]);
+                    $p->cso_name = $post[$key-1]['CSO Name']; 
+                    $p->location = $post[$key-1]['Location'];
+                    
+                    $date =  \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($post[$key-1]['Date']);
+                    $p->post_date = $date->format('Y-m-d');
+                    
+                    $time = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($post[$key-1]['Time']);
+                    $p->post_time = $time->format('H:i');
 
-               // dd();
-                $p->post_time = $time->format('H:i');
-                $p->details = $post[0]['Details of Incident'];
-                $p->response_actions = $post[0]['Response Actions'];
-                $p->responder_name = $post[0]['Responder Name'];
-                $p->feedback_on_response = $post[0]['Feedback On Response'];
-                $p->additional_follow_up = $post[0]['Additional Follow Up'];
-                
-                $d = District::firstOrNew(['name' => ucwords($post[0]['District'])]);
-                $d->save();
-                $p->district_id = $d->id;
+                    $p->details = $post[$key-1]['Details of Incident'];
+                    $p->response_actions = $post[$key-1]['Response Actions'];
+                    $p->responder_name = $post[$key-1]['Responder Name'];
+                    $p->feedback_on_response = $post[$key-1]['Feedback On Response'];
+                    $p->additional_follow_up = $post[$key-1]['Additional Follow Up'];
+                    
+                    $d = District::firstOrNew(['name' => ucwords($post[$key-1]['District'])]);
+                    $d->save();
+                    $p->district_id = $d->id;
 
-                $pt = PostType::firstOrNew(['name' => ucwords($post[0]['Incident Type'])]);
-                $pt->save();
-                $p->post_type_id = $pt->id;
+                    $pt = PostType::firstOrNew(['name' => ucwords($post[$key-1]['Incident Type'])]);
+                    $pt->save();
+                    $p->post_type_id = $pt->id;
 
-                $p->save();
+                    $p->save();
 
-                if ($p->trashed()) {
-                    $p->restore();
+                    if ($p->trashed()) {
+                        $p->restore();
+                    }
+                    // $recordCount++;
                 }
 
             }

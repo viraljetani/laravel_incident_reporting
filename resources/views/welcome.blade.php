@@ -1,100 +1,190 @@
-<!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
+@section('template_title')
+	Home
+@endsection
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+{{-- @section('template_fastload_css')
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+@endsection --}}
 
-            .full-height {
-                height: 100vh;
-            }
+@section('content')
+    <div class="col-12" class="map-canvas-container">
+        @if(config('settings.googleMapsAPIStatus'))
+            <div id="map-canvas"></div>                                
+        @endif
+    </div>
+@endsection
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+@section('footer_scripts')
+@if(config('settings.googleMapsAPIStatus'))
 
-            .position-ref {
-                position: relative;
-            }
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+</script>
+<script type="text/javascript">
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+    function google_maps_geocode_and_map() {
 
-            .content {
-                text-align: center;
-            }
+        //var geocoder = new google.maps.Geocoder();
+        //var address = '{{ $posts[0]->location }}';
 
-            .title {
-                font-size: 84px;
-            }
+        var map = new google.maps.Map(document.getElementById('map-canvas'), {
+          zoom: 2,
+          center: {lat: -28.024, lng: 140.887}
+        });
 
-            .title small {
-                font-size: 60px;
-            }
+        // Create an array of alphabetical characters used to label the markers.
+        //var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+        // Add some markers to the map.
+        // Note: The code uses the JavaScript Array.prototype.map() method to
+        // create an array of markers based on a given "locations" array.
+        // The map() method here has nothing to do with the Google Maps API.
+        var markers = locations.map(function(location, i) {
+          return new google.maps.Marker({
+            position: location,
+            //label: labels[i % labels.length]
+          });
+        });
+        console.log(markers);
+        // Add a marker clusterer to manage the markers.
+        var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      
+    }
+     var locations = [
+        {lat: -31.563910, lng: 147.154312},
+        {lat: -33.718234, lng: 150.363181},
+        {lat: -33.727111, lng: 150.371124},
+        {lat: -33.848588, lng: 151.209834},
+        {lat: -33.851702, lng: 151.216968},
+        {lat: -34.671264, lng: 150.863657},
+        {lat: -35.304724, lng: 148.662905},
+        {lat: -36.817685, lng: 175.699196},
+        {lat: -36.828611, lng: 175.790222},
+        {lat: -37.750000, lng: 145.116667},
+        {lat: -37.759859, lng: 145.128708},
+        {lat: -37.765015, lng: 145.133858},
+        {lat: -37.770104, lng: 145.143299},
+        {lat: -37.773700, lng: 145.145187},
+        {lat: -37.774785, lng: 145.137978},
+        {lat: -37.819616, lng: 144.968119},
+        {lat: -38.330766, lng: 144.695692},
+        {lat: -39.927193, lng: 175.053218},
+        {lat: -41.330162, lng: 174.865694},
+        {lat: -42.734358, lng: 147.439506},
+        {lat: -42.734358, lng: 147.501315},
+        {lat: -42.735258, lng: 147.438000},
+        {lat: -43.999792, lng: 170.463352},
+      ];
+        var locations1 = [];
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
-            <div class="content">
-                <div class="title m-b-md">
-                    {!! trans('titles.app') !!}<br />
-                    <small>
-                        {{ trans('titles.app2', ['version' => config('settings.app_project_version')]) }}
-                    </small>
-                </div>
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+        var geocoder = new google.maps.Geocoder();
+            @foreach($posts as $key => $post)
+            var address = '{{ $post->location }}';
+			geocoder.geocode( { 'address': address}, function(results, status) {
+
+				if (status == google.maps.GeocoderStatus.OK) {
+					var latitude = results[0].geometry.location.lat();
+                    var longitude = results[0].geometry.location.lng();
+                }
+
+              var latlong = "{lat: latitude, lng: longitude},";
+              var singleObj = {}
+                singleObj['lat'] = latitude;
+                singleObj['long'] = longitude;
+
+              locations1.push(singleObj);
+            });
+            @endforeach
+            
+
+            /* //console.log(locations1); 
+            var listOfObjects = [];
+            var a = ["car", "bike", "scooter"];
+            a.forEach(function(entry) {
+                var singleObj = {}
+                singleObj['lat'] = 'vehicle';
+                singleObj['long'] = entry;
+                listOfObjects.push(singleObj);
+            }); */
+           
+
+            console.log(locations);
+
+    google_maps_geocode_and_map();
+
+</script>
+
+		{{-- <script type="text/javascript">
+
+		function google_maps_geocode_and_map() {
+
+			var geocoder = new google.maps.Geocoder();
+			var address = '{{ $posts[0]->location }}';
+
+			geocoder.geocode( { 'address': address}, function(results, status) {
+
+				if (status == google.maps.GeocoderStatus.OK) {
+
+					var latitude = results[0].geometry.location.lat();
+					var longitude = results[0].geometry.location.lng();
+
+					// SHOW LATITUDE AND LONGITUDE
+					document.getElementById('latitude').innerHTML += latitude;
+					document.getElementById('longitude').innerHTML += longitude;
+
+					// CHECK IF HTML DOM CONTAINER IS FOUND
+					if (document.getElementById('map-canvas')){
+
+						function getMap() {
+
+						    // Coordinates to center the map
+						    var LatitudeAndLongitude = new google.maps.LatLng(latitude,longitude);
+
+							var mapOptions = {
+								scrollwheel: true,
+								disableDefaultUI: true,
+								draggable: true,
+								zoom: 10,
+								center: LatitudeAndLongitude,
+								mapTypeId: google.maps.MapTypeId.TERRAIN // HYBRID, ROADMAP, SATELLITE, or TERRAIN
+							};
+
+							var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+						  	// MARKER
+						    var marker = new google.maps.Marker({
+						        map: map,
+						        //icon: "",
+						        title: '<strong>Name</strong> <br />  Last Name',
+						        position: map.getCenter()
+						    });
+
+						    // INFO WINDOW
+							var infowindow = new google.maps.InfoWindow();
+							infowindow.setContent('<strong>My name</strong> <br />  myemail');
+
+						    infowindow.open(map, marker);
+							google.maps.event.addListener(marker, 'click', function() {
+								infowindow.open(map, marker);
+							});
+
+						}
+
+						// ATTACH MAP TO DOM HTML ELEMENT
+						google.maps.event.addDomListener(window, 'load', getMap);
+
+					}
+
+				}
+
+			});
+
+		}
+
+		google_maps_geocode_and_map();
+
+	</script> --}}
+	@endif
+@endsection

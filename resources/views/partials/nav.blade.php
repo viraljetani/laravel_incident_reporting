@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-    <div class="container">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-inverse navbar-laravel fixed-top">
+    <div class="container-fluid">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {!! config('app.name', trans('titles.app')) !!}
+            <i class="fa fa-american-sign-language-interpreting"></i> {!! config('app.name', trans('titles.app')) !!}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

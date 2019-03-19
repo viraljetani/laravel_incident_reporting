@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('postType','district')->orderBy('post_date', 'DESC')->orderBy('location')->get();
+        $posts = Post::with('postType','district')->orderBy('post_date', 'DESC')->orderBy('location')->paginate(10);
 
         return view('posts.index', compact('posts'));
 
@@ -43,9 +43,16 @@ class PostController extends Controller
         $request->validate([
             'import_file' => 'required'
         ]);
-        //$request->hasFile('ex_file')
-        $file = base_path() . '/database/seeds/import/Chisankho Data.xlsx';
+        if($request->hasFile('import_file')) {
+            //$file = base_path() . '/database/seeds/import/Chisankho Data.xlsx';
+            $file = $request->import_file;
         Excel::import(new PostsImport, $file);
+
+        }
+
+        // Redirect
+        $request->session()->flash('message', 'Data was Imported!');
+        return redirect()->to('posts');
     }
 
     /**

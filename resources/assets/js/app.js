@@ -63,3 +63,11 @@ $.fn.extend({
         return !additions ? self : self.addClass(additions);
     }
 });
+
+$(function () {
+    
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+
+});

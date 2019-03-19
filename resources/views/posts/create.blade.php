@@ -27,7 +27,7 @@
                         
                             <div class="form-group">
                                 {{ Form::label('excel_import', 'Upload Excel file') }}
-                                {{ Form::file('file_import', Input::old('file_import'), array('class' => 'form-control','required'=>'required')) }}
+                                {{ Form::file('import_file', Input::old('import_file'), array('class' => 'form-control','required'=>'required')) }}
                             </div>
                         
                             

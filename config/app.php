@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'CHISANKHO2019'),
 
     /*
     |--------------------------------------------------------------------------
@@ -150,6 +150,7 @@ return [
          * Package Service Providers...
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
 
         /*
          * Application Service Providers...

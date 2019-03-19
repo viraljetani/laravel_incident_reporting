@@ -10,7 +10,7 @@
 
         <title>@if (trim($__env->yieldContent('template_title')))@yield('template_title') | @endif {{ config('app.name', Lang::get('titles.app')) }}</title>
         <meta name="description" content="">
-        <meta name="author" content="Jeremy Kenedy">
+        <meta name="author" content="Viral Jetani">
         <link rel="shortcut icon" href="/favicon.ico">
 
         {{-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --}}
@@ -58,9 +58,9 @@
 
             @include('partials.nav')
 
-            <main class="py-4">
+            <main>
 
-                <div class="container">
+                <div class="container-fluid p-0">
                     <div class="row">
                         <div class="col-12">
                             @include('partials.form-status')
@@ -68,7 +68,22 @@
                     </div>
                 </div>
 
-                @yield('content')
+                <div class="wrapper">
+        
+                    @include('partials.sidebar')
+
+                    <!-- Page Content  -->
+                    <div id="content">
+                        <div class="container-fluid p-0">
+                            <div class="row no-gutters">
+
+                                @yield('content')
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
             </main>
 
