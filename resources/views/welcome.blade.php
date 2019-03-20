@@ -29,7 +29,7 @@
         //var address = '{{ $posts[0]->location }}';
 
         var map = new google.maps.Map(document.getElementById('map-canvas'), {
-          zoom: 5,
+          zoom: 7,
           center: {lat: -13.2543, lng: 34.3015}
         });
 
