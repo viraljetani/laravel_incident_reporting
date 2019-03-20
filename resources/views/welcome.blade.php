@@ -80,9 +80,10 @@
         var locations1 = [];
 
         var geocoder = new google.maps.Geocoder();
+        @if(isset($posts)) {
             @foreach($posts as $key => $post)
             var address = '{{ $post->location }}';
-			geocoder.geocode( { 'address': address}, function(results, status) {
+			      geocoder.geocode( { 'address': address}, function(results, status) {
 
 				if (status == google.maps.GeocoderStatus.OK) {
 					var latitude = results[0].geometry.location.lat();
@@ -97,7 +98,7 @@
               locations1.push(singleObj);
             });
             @endforeach
-            
+          }
 
             /* //console.log(locations1); 
             var listOfObjects = [];
