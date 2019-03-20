@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Excel;
-use App\imports\PostsImport;
+use App\Imports\PostsImport;
 
 class PostController extends Controller
 {
