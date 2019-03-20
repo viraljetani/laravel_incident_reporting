@@ -29,8 +29,8 @@
         //var address = '{{ $posts[0]->location }}';
 
         var map = new google.maps.Map(document.getElementById('map-canvas'), {
-          zoom: 2,
-          center: {lat: -28.024, lng: 140.887}
+          zoom: 3,
+          center: {lat: -13.2543, lng: 34.3015}
         });
 
         // Create an array of alphabetical characters used to label the markers.
