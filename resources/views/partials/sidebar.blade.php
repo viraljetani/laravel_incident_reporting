@@ -1,5 +1,5 @@
 <!-- Sidebar  -->
-<nav id="sidebar" class="active bg-dark position-fixed d-none d-md-block">
+<nav id="sidebar" class="active bg-dark d-none d-md-block">
    @php // Current route
     $currentRoute = \Request::route()->getName(); @endphp
     <ul class="list-unstyled components">
@@ -16,8 +16,8 @@
             </a>
             
         </li>
-        <li>
-            <a href="#">
+        <li class="@if(substr_count($currentRoute, 'reports')) active @endif">
+            <a href="{{ route('reports') }}">
                 <i class="fa fa-image"></i>
                 Reports
             </a>

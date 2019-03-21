@@ -8,6 +8,7 @@ use Excel;
 use App\Imports\PostsImport;
 use App\Charts\ReportChart;
 use App\Models\User;
+use App\District;
 
 class PostController extends Controller
 {
@@ -26,20 +27,27 @@ class PostController extends Controller
 
     public function reports() {
 
-        $posts = Post::with(['district' => function($query) {
-            $query->select('messages.user_id');
-            $query->groupBy('user_id');
-        }])->get();
-        $data = collect([]); // Could also be an array
+        /* $districts = District::with('posts')
+            ->get()
+            ->map(function ($district) {
+                // Return the number of posts with that district
+                
+                return count($district->posts);
+        }); */
 
-        for ($days_backwards = 2; $days_backwards >= 0; $days_backwards--) {
-            // Could also be an array_push if using an array rather than a collection.
-            $data->push(User::whereDate('created_at', today()->subDays($days_backwards))->count());
+        $districts = District::withCount(['posts'])->get()->toArray();
+        //dd($districts);
+        $data = collect([]);
+        foreach($districts as $key => $district){
+            
+            $data->put($district['name'] , $district['posts_count']);
         }
-
+        //dd($data->values());
         $chart = new ReportChart;
-        $chart->labels(['2 days ago', 'Yesterday', 'Today']);
-        $chart->dataset('My dataset', 'line', $data);
+        $chart->labels($data->keys());
+        $chart->dataset('Total Incidents in a District', 'bar', $data->values());
+
+        return view('posts.reports',compact('chart'));
 
         
     }

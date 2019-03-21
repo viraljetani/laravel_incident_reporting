@@ -15,6 +15,7 @@
 
 // Homepage Route
 Route::get('/', 'WelcomeController@welcome')->name('welcome');
+Route::get('/reports', 'PostController@reports')->name('reports');
 
 // Authentication Routes
 Auth::routes();
@@ -135,7 +136,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
     ]);
     Route::model('events', 'Event');
 
-    Route::get('posts/reports', 'PostController@reports')->name('post.reports');
+    
     Route::resource('posts', 'PostController', [
         'names' => [
             'index'   => 'posts',
@@ -145,6 +146,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
         ],
         'except' => [],
     ]);
+    
     Route::model('posts', 'Post');
 });
 
