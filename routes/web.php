@@ -134,6 +134,8 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
         'except' => [],
     ]);
     Route::model('events', 'Event');
+
+    Route::get('posts/reports', 'PostController@reports')->name('post.reports');
     Route::resource('posts', 'PostController', [
         'names' => [
             'index'   => 'posts',

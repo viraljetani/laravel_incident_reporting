@@ -6,6 +6,8 @@ use App\Post;
 use Illuminate\Http\Request;
 use Excel;
 use App\Imports\PostsImport;
+use App\Charts\ReportChart;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -20,6 +22,26 @@ class PostController extends Controller
 
         return view('posts.index', compact('posts'));
 
+    }
+
+    public function reports() {
+
+        $posts = Post::with(['district' => function($query) {
+            $query->select('messages.user_id');
+            $query->groupBy('user_id');
+        }])->get();
+        $data = collect([]); // Could also be an array
+
+        for ($days_backwards = 2; $days_backwards >= 0; $days_backwards--) {
+            // Could also be an array_push if using an array rather than a collection.
+            $data->push(User::whereDate('created_at', today()->subDays($days_backwards))->count());
+        }
+
+        $chart = new ReportChart;
+        $chart->labels(['2 days ago', 'Yesterday', 'Today']);
+        $chart->dataset('My dataset', 'line', $data);
+
+        
     }
 
     /**

@@ -1,8 +1,8 @@
 <!-- Sidebar  -->
-<nav id="sidebar" class="active bg-dark">
+<nav id="sidebar" class="active bg-dark position-fixed d-none d-md-block">
    @php // Current route
     $currentRoute = \Request::route()->getName(); @endphp
-    <ul class="list-unstyled components position-fixed">
+    <ul class="list-unstyled components">
         <li class="@if(substr_count($currentRoute, 'welcome')) active @endif">
             <a href="{{ url('/') }}">
                 <i class="fa fa-map-marker"></i>

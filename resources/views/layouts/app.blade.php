@@ -46,10 +46,6 @@
             ]) !!};
         </script>
 
-        @if (Auth::User() && (Auth::User()->profile) && $theme->link != null && $theme->link != 'null')
-            <link rel="stylesheet" type="text/css" href="{{ $theme->link }}">
-        @endif
-
         @yield('head')
 
     </head>
@@ -60,14 +56,6 @@
 
             <main>
 
-                <div class="container-fluid p-0">
-                    <div class="row">
-                        <div class="col-12">
-                            @include('partials.form-status')
-                        </div>
-                    </div>
-                </div>
-
                 <div class="wrapper">
         
                     @include('partials.sidebar')
@@ -75,8 +63,11 @@
                     <!-- Page Content  -->
                     <div id="content">
                         <div class="container-fluid p-0">
+                            
                             <div class="row no-gutters">
-
+                                <div class="col-12">
+                                    @include('partials.form-status')
+                                </div>
                                 @yield('content')
 
                             </div>

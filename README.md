@@ -110,13 +110,30 @@ Laravel 5.7 with user authentication, registration with email confirmation, soci
 ```
 php artisan vendor:publish --tag=laravelroles &&
 php artisan vendor:publish --tag=laravel2step
+
+
 ```
 7. From the projects root folder run `sudo chmod -R 755 ../laravel-auth`
 8. From the projects root folder run `php artisan key:generate`
 9. From the projects root folder run `php artisan migrate`
 10. From the projects root folder run `composer dump-autoload`
 11. From the projects root folder run `php artisan db:seed`
-12. Compile the front end assets with [npm steps](#using-npm) or [yarn steps](#using-yarn).
+
+For Charts  
+composer require consoletvs/charts:6.*
+
+Register the service provider in the file located at: config/app.php in the providers key.
+
+ConsoleTVs\Charts\ChartsServiceProvider::class,
+php artisan vendor:publish --tag=charts_config
+
+php artisan make:chart ReportChart Chartjs
+
+in controller:
+use App\Charts\ReportChart;
+
+
+12. Compile the front end assets with [npm run dev](#using-npm) or [yarn dev](#using-yarn).
 
 #### Build the Front End Assets with Mix
 ##### Using NPM:

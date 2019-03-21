@@ -33,7 +33,7 @@ class PostsImport implements ToCollection
                 $post[] = array_combine($header, $row->toArray());
                 //var_dump($post);
                 //print_r($post[$key-1]); echo "<br><br>"; 
-                if(isset($post[$key-1]['Unique Record Number (URN)'])) {
+                if(isset($post[$key-1]['Unique Record Number (URN)']) && isset($post[$key-1]['Location']) ) {
                     $p = Post::withTrashed()->firstOrNew(['unique_record_number' => intval($post[$key-1]['Unique Record Number (URN)'])]);
                     $p->cso_name = $post[$key-1]['CSO Name']; 
                     $p->location = $post[$key-1]['Location'];
