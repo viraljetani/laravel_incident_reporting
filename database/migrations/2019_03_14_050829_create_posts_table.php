@@ -23,6 +23,18 @@ class CreatePostsTable extends Migration
             $table->integer('post_type_id');
             $table->integer('district_id');
             $table->text('details')->nullable();
+
+            $table->text('responsible')->nullable();
+            $table->text('male_perpetrators')->nullable();
+            $table->text('female_perpetrators')->nullable();
+            $table->text('victims')->nullable();
+            $table->text('male_victims')->nullable();
+            $table->text('female_victims')->nullable();
+            $table->text('where_happened')->nullable();
+            $table->text('weapons_used')->nullable();
+            $table->text('impact')->nullable();
+            $table->text('nature_of_response')->nullable();
+
             $table->text('response_actions')->nullable();
             $table->string('responder_name',120)->nullable();
             $table->text('feedback_on_response')->nullable();

@@ -17,9 +17,7 @@ class PostsImport implements ToCollection
     * @param Collection $collection
     */
     public function collection(Collection $collection)
-    {
-
-        
+    {  
         $post = [];
         $count = 1;
         //$recordCount = 0;
@@ -35,7 +33,7 @@ class PostsImport implements ToCollection
                 $post[] = array_combine($header, $row->toArray());
                 //var_dump($post);
                 //print_r($post[$key-1]); echo "<br><br>"; 
-                if($post[$key-1]['Unique Record Number (URN)']) {
+                if(isset($post[$key-1]['Unique Record Number (URN)'])) {
                     $p = Post::withTrashed()->firstOrNew(['unique_record_number' => intval($post[$key-1]['Unique Record Number (URN)'])]);
                     $p->cso_name = $post[$key-1]['CSO Name']; 
                     $p->location = $post[$key-1]['Location'];
@@ -47,6 +45,19 @@ class PostsImport implements ToCollection
                     $p->post_time = $time->format('H:i');
 
                     $p->details = $post[$key-1]['Details of Incident'];
+
+                    $p->responsible = $post[$key-1]['Who is responsible for the Incident'];
+                    $p->male_perpetrators = $post[$key-1]['Number of Male Perpetrators'];
+                    $p->female_perpetrators = $post[$key-1]['Number of Female Perpetrators'];
+                    
+                    $p->victims = $post[$key-1]['Who were the victims?'];
+                    $p->male_victims = $post[$key-1]['Number of Male Victims'];
+                    $p->female_victims = $post[$key-1]['Number of Female victims'];
+                    $p->where_happened = $post[$key-1]['Where did the incident happen?'];
+                    $p->weapons_used = $post[$key-1]['Weapons Used'];
+                    $p->impact = $post[$key-1]['What was the impact of the incident '];
+                    $p->nature_of_response = $post[$key-1]['Nature of responses undertaken '];
+
                     $p->response_actions = $post[$key-1]['Response Actions'];
                     $p->responder_name = $post[$key-1]['Responder Name'];
                     $p->feedback_on_response = $post[$key-1]['Feedback On Response'];
