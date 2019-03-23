@@ -12,6 +12,7 @@
         <meta name="description" content="">
         <meta name="author" content="Viral Jetani">
         <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
         {{-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --}}
         <!--[if lt IE 9]>
