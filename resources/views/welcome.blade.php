@@ -17,175 +17,70 @@
 @endsection
 
 @section('footer_scripts')
-@if(config('settings.googleMapsAPIStatus'))
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin="" />
+<link rel="stylesheet" href="https://leaflet.github.io/Leaflet.markercluster/example/screen.css" />
+<link rel="stylesheet" href="https://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.Default.css" />
+<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js" integrity="sha512-WXoSHqw/t26DszhdMhOXOkI7qCiv5QWXhH9R7CgvgZMHz1ImlkVQ3uNsiQKu5wwbbxtPzFXd1hK4tzno2VqhpA==" crossorigin=""></script>
 
-<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
-</script>
+<script src="https://leaflet.github.io/Leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
+<!--script src="https://leaflet.github.io/Leaflet.markercluster/example/realworld.388.js"></script-->
+
+
+
 <script type="text/javascript">
 
-    function google_maps_geocode_and_map() {
-
-        //var geocoder = new google.maps.Geocoder();
-        //var address = '{{ $posts[0]->location }}';
-
-        var map = new google.maps.Map(document.getElementById('map-canvas'), {
-          zoom: 7,
-          center: {lat: -13.2543, lng: 34.3015}
-        });
-
-        // Create an array of alphabetical characters used to label the markers.
-        //var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-        // Add some markers to the map.
-        // Note: The code uses the JavaScript Array.prototype.map() method to
-        // create an array of markers based on a given "locations" array.
-        // The map() method here has nothing to do with the Google Maps API.
-        var markers = locations.map(function(location, i) {
-          return new google.maps.Marker({
-            position: location,
-            //label: labels[i % labels.length]
-          });
-        });
-        console.log(markers);
-        // Add a marker clusterer to manage the markers.
-        var markerCluster = new MarkerClusterer(map, markers,
-            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-      
-    }
-     var locations = [
-        {lat: -31.563910, lng: 147.154312},
-        {lat: -33.718234, lng: 150.363181},
-        {lat: -33.727111, lng: 150.371124},
-        {lat: -33.848588, lng: 151.209834},
-        {lat: -33.851702, lng: 151.216968},
-        {lat: -34.671264, lng: 150.863657},
-        {lat: -35.304724, lng: 148.662905},
-        {lat: -36.817685, lng: 175.699196},
-        {lat: -36.828611, lng: 175.790222},
-        {lat: -37.750000, lng: 145.116667},
-        {lat: -37.759859, lng: 145.128708},
-        {lat: -37.765015, lng: 145.133858},
-        {lat: -37.770104, lng: 145.143299},
-        {lat: -37.773700, lng: 145.145187},
-        {lat: -37.774785, lng: 145.137978},
-        {lat: -37.819616, lng: 144.968119},
-        {lat: -38.330766, lng: 144.695692},
-        {lat: -39.927193, lng: 175.053218},
-        {lat: -41.330162, lng: 174.865694},
-        {lat: -42.734358, lng: 147.439506},
-        {lat: -42.734358, lng: 147.501315},
-        {lat: -42.735258, lng: 147.438000},
-        {lat: -43.999792, lng: 170.463352},
-      ];
-        var locations1 = [];
-
+    @if(isset($posts)) 
+        var addressPoints = [];
         var geocoder = new google.maps.Geocoder();
-        @if(isset($posts)) 
-            @foreach($posts as $key => $post)
-            var address = '{{ $post->location }}';
-			      geocoder.geocode( { 'address': address}, function(results, status) {
+        @foreach($posts as $key => $post)
+        var address = '{{ $post->location }}';
+                geocoder.geocode( { 'address': address}, function(results, status) {
 
-				  if (status == google.maps.GeocoderStatus.OK) {
-					var latitude = results[0].geometry.location.lat();
-                    var longitude = results[0].geometry.location.lng();
-                }
+                if (status == google.maps.GeocoderStatus.OK) {
+                var latitude = results[0].geometry.location.lat();
+                var longitude = results[0].geometry.location.lng();
+            }
 
-              var latlong = "{lat: latitude, lng: longitude},";
-              var singleObj = {}
-                singleObj['lat'] = latitude;
-                singleObj['long'] = longitude;
+            //var latlong = "{lat: latitude, lng: longitude},";
+            /* var singleObj = {}
+            singleObj['lat'] = latitude;
+            singleObj['long'] = longitude; */
+            var cords = [latitude,longitude];
+            addressPoints.push(cords);
+        });
+        @endforeach
+        console.log(addressPoints);
+    @endif
+/* var addressPoints = [
+[-37.8210922667, 175.2209316333],
+[-37.8210819833, 175.2213903167],
+[-37.8210881833, 175.2215004833],
+[-37.8211946833, 175.2213655333],
+[-37.8209458667, 175.2214051333],
+[-37.8208292333, 175.2214374833, "<h1>title</h1>"],
 
-              locations1.push(singleObj);
-            });
-            @endforeach
-          @endif
+[-37.8194342167, 175.22322975, "9"]
+]; */
+    var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
+        }),
+        latlng = L.latLng(-13.2543, 34.3015);
 
-            /* //console.log(locations1); 
-            var listOfObjects = [];
-            var a = ["car", "bike", "scooter"];
-            a.forEach(function(entry) {
-                var singleObj = {}
-                singleObj['lat'] = 'vehicle';
-                singleObj['long'] = entry;
-                listOfObjects.push(singleObj);
-            }); */
-           
+    var map = L.map('map-canvas', {center: latlng, zoom: 6, layers: [tiles]});
 
-            console.log(locations);
+    var markers = L.markerClusterGroup();
+    
+    for (var i = 0; i < addressPoints.length; i++) {
+        var a = addressPoints[i];
+        var title = a[2];
+        var marker = L.marker(new L.LatLng(a[0], a[1]), { title: title });
+        marker.bindPopup(title);
+        markers.addLayer(marker);
+    }
 
-    google_maps_geocode_and_map();
+    map.addLayer(markers);
 
 </script>
-
-		{{-- <script type="text/javascript">
-
-		function google_maps_geocode_and_map() {
-
-			var geocoder = new google.maps.Geocoder();
-			var address = '{{ $posts[0]->location }}';
-
-			geocoder.geocode( { 'address': address}, function(results, status) {
-
-				if (status == google.maps.GeocoderStatus.OK) {
-
-					var latitude = results[0].geometry.location.lat();
-					var longitude = results[0].geometry.location.lng();
-
-					// SHOW LATITUDE AND LONGITUDE
-					document.getElementById('latitude').innerHTML += latitude;
-					document.getElementById('longitude').innerHTML += longitude;
-
-					// CHECK IF HTML DOM CONTAINER IS FOUND
-					if (document.getElementById('map-canvas')){
-
-						function getMap() {
-
-						    // Coordinates to center the map
-						    var LatitudeAndLongitude = new google.maps.LatLng(latitude,longitude);
-
-							var mapOptions = {
-								scrollwheel: true,
-								disableDefaultUI: true,
-								draggable: true,
-								zoom: 10,
-								center: LatitudeAndLongitude,
-								mapTypeId: google.maps.MapTypeId.TERRAIN // HYBRID, ROADMAP, SATELLITE, or TERRAIN
-							};
-
-							var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
-						  	// MARKER
-						    var marker = new google.maps.Marker({
-						        map: map,
-						        //icon: "",
-						        title: '<strong>Name</strong> <br />  Last Name',
-						        position: map.getCenter()
-						    });
-
-						    // INFO WINDOW
-							var infowindow = new google.maps.InfoWindow();
-							infowindow.setContent('<strong>My name</strong> <br />  myemail');
-
-						    infowindow.open(map, marker);
-							google.maps.event.addListener(marker, 'click', function() {
-								infowindow.open(map, marker);
-							});
-
-						}
-
-						// ATTACH MAP TO DOM HTML ELEMENT
-						google.maps.event.addDomListener(window, 'load', getMap);
-
-					}
-
-				}
-
-			});
-
-		}
-
-		google_maps_geocode_and_map();
-
-	</script> --}}
-	@endif
 @endsection

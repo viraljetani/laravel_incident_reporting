@@ -4,13 +4,13 @@
     $currentRoute = \Request::route()->getName(); @endphp
     <ul class="list-unstyled components">
         <li class="@if(substr_count($currentRoute, 'welcome')) active @endif">
-            <a href="{{ url('/') }}">
+            <a href="{{ url('/map') }}">
                 <i class="fa fa-map-marker"></i>
                 Map
             </a>
         </li>
         <li class="@if(substr_count($currentRoute, 'posts')) active @endif">
-        <a href="{{ route('posts') }}">
+        <a href="{{ route('posts.data') }}">
                 <i class="fa fa-briefcase"></i>
                 Data
             </a>

@@ -83,7 +83,7 @@ class PostController extends Controller
         //dd($data->values());
         $chart2 = new ReportChart;
         $chart2->labels($data2->keys());
-        $chart2->dataset('Total Incidents by Incident Types', 'horizontalBar', $data2->values())->options(['backgroundColor' => [
+        $chart2->dataset('Total Incidents by Incident Types', 'bar', $data2->values())->options(['backgroundColor' => [
             'rgba(255, 99, 132, 0.9)',
             'rgba(54, 162, 235, 0.2)',
             'rgba(255, 206, 86, 0.2)',

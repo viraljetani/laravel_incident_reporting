@@ -48,7 +48,7 @@
         </script>
 
         @yield('head')
-
+        
     </head>
     <body>
         <div id="app">

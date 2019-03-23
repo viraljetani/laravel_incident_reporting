@@ -14,8 +14,10 @@
 */
 
 // Homepage Route
-Route::get('/', 'WelcomeController@welcome')->name('welcome');
-Route::get('/reports', 'PostController@reports')->name('reports');
+//Route::get('/', 'WelcomeController@welcome')->name('welcome');
+Route::get('/map', 'welcomeController@welcome')->name('welcome');
+Route::get('/', 'PostController@reports')->name('reports');
+Route::get('/posts/data', 'PostController@index')->name('posts.data');
 
 // Authentication Routes
 Auth::routes();

@@ -15,7 +15,7 @@
                 @if (Session::has('message'))
                 <div class="alert alert-info">{{ Session::get('message') }}</div>
                 @endif
-                <h2 class="m-md-4 p-md-4 m-xs-2 p-xs-2">Reported Incidents <a href="{{route('posts.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Import New </a></h2>
+                <h2 class="m-md-4 p-md-4 m-xs-2 p-xs-2">Reported Incidents @auth <a href="{{route('posts.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Import New </a> @endauth</h2>
                 @if(isset($posts))
                     @foreach($posts as $key => $post)
                         <article class="post-card m-md-4 p-md-4 m-xs-2 p-xs-2">
