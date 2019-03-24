@@ -12,16 +12,14 @@
 | Middleware options can be located in `app/Http/Kernel.php`
 |
 */
-
+// Authentication Routes
+Auth::routes();
 // Homepage Route
 //Route::get('/', 'WelcomeController@welcome')->name('welcome');
 Route::get('/', 'PostController@reports')->name('reports');
 Route::get('/map', 'welcomeController@welcome')->name('welcome');
 
-Route::get('/posts/data', 'PostController@index')->name('posts.data');
-
-// Authentication Routes
-Auth::routes();
+Route::get('posts/data', 'PostController@index')->name('posts.data');
 
 // Public Routes
 Route::group(['middleware' => ['web', 'activity']], function () {
