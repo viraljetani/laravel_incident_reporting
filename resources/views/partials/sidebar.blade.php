@@ -10,7 +10,7 @@
             </a>
         </li>
         <li class="@if(substr_count($currentRoute, 'posts')) active @endif">
-        <a href="{{ route('posts.data') }}">
+        <a href="{{ route('posts-data') }}">
                 <i class="fa fa-briefcase"></i>
                 Data
             </a>

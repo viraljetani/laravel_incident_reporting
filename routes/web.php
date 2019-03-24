@@ -19,7 +19,7 @@ Auth::routes();
 Route::get('/', 'PostController@reports')->name('reports');
 Route::get('/map', 'welcomeController@welcome')->name('welcome');
 
-Route::get('posts/data', 'PostController@index')->name('posts.data');
+Route::get('posts/data', 'PostController@index')->name('posts-data');
 
 // Public Routes
 Route::group(['middleware' => ['web', 'activity']], function () {
