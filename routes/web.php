@@ -140,12 +140,12 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
     
     Route::resource('posts', 'PostController', [
         'names' => [
-            'index'   => 'posts',
+            
             'create' => 'posts.create',
             'edit' => 'posts.edit',
             'update' => 'posts.update',
         ],
-        'except' => [],
+        'except' => ['index'],
     ]);
     
     Route::model('posts', 'Post');
