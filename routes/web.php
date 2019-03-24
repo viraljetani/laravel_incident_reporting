@@ -15,10 +15,7 @@
 
 // Homepage Route
 //Route::get('/', 'WelcomeController@welcome')->name('welcome');
-Route::get('/', function () {
-    return "configurations are ok.";
- });
-//Route::get('/', 'PostController@reports')->name('reports');
+Route::get('/', 'PostController@reports')->name('reports');
 Route::get('/map', 'welcomeController@welcome')->name('welcome');
 
 Route::get('/posts/data', 'PostController@index')->name('posts.data');
