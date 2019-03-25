@@ -20,6 +20,7 @@ Route::get('/', 'PostController@reports')->name('reports');
 Route::get('/map', 'welcomeController@welcome')->name('welcome');
 
 Route::get('posts/data', 'PostController@index')->name('posts-data');
+Route::get('/reports/data', 'PostController@reports')->name('reports.data');
 
 // Public Routes
 Route::group(['middleware' => ['web', 'activity']], function () {
@@ -140,6 +141,12 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
     
     Route::resource('posts', 'PostController', [
         'names' => [
+            
+            'create' => 'posts.create',
+            'edit' => 'posts.edit',
+            'update' => 'posts.update',
+        ],
+        'only' => [
             
             'create' => 'posts.create',
             'edit' => 'posts.edit',
