@@ -1,23 +1,7 @@
-## Laravel-Auth
-#### Laravel-Auth is a Complete Build of Laravel 5.7 with Email Registration Verification, Social Authentication, User Roles and Permissions, User Profiles, and Admin restricted user management system. Built on Bootstrap 4.
-[![Build Status](https://travis-ci.org/jeremykenedy/laravel-auth.svg?branch=master)](https://travis-ci.org/jeremykenedy/laravel-auth)
-[![StyleCI](https://styleci.io/repos/44714043/shield?branch=master)](https://styleci.io/repos/44714043)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jeremykenedy/laravel-auth/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jeremykenedy/laravel-auth/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/jeremykenedy/laravel-auth/badges/build.png?b=master)](https://scrutinizer-ci.com/g/jeremykenedy/laravel-auth/build-status/master)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+## Chisankho2019
+#### Built on Laravel 5.7 with Email Registration Verification, Social Authentication, User Roles and Permissions, User Profiles, and Admin restricted user management system. Built with Bootstrap 4.
 
- ### Sponsor	
- <table>	
-     <tr>	
-         <td>	
-             <img src="https://s3.amazonaws.com/sponsers/sponsor-logo.png">	
-         </td>	
-         <td>	
-             If you want to quickly add secure token-based authentication to Laravel apps, feel free to check Auth0's Laravel SDK and free plan at <a href="https://auth0.com/overview?utm_source=GHsponsor&utm_medium=GHsponsor&utm_campaign=laravel-auth&utm_content=auth" target="_blank">https://auth0.com/overview</a>.	
-         </td>	
-     </tr>	
- </table>
-
+ 
 #### Table of contents
 - [About](#about)
 - [Features](#features)
@@ -45,7 +29,7 @@
 Laravel 5.7 with user authentication, registration with email confirmation, social media authentication, password recovery, and captcha protection. Uses official [Bootstrap 4](https://getbootstrap.com). This also makes full use of Controllers for the routes, templates for the views, and makes use of middleware for routing. Project can be stood up in minutes.
 
 ### Features
-#### A [Laravel](https://laravel.com/) 5.7.x with minimal [Bootstrap](https://getbootstrap.com) 4.0.x project.
+#### A [Laravel](https://laravel.com/) 5.7.x with minimal [Bootstrap](https://getbootstrap.com) 4.0.x project (Requires PHP 7.2 Version).
 
 | Laravel-Auth Features  |
 | :------------ |
@@ -55,21 +39,22 @@ Laravel 5.7 with user authentication, registration with email confirmation, soci
 |Uses [Artisan](https://laravel.com/docs/5.7/artisan) to manage database migration, schema creations, and create/publish page controller templates|
 |Dependencies are managed with [COMPOSER](https://getcomposer.org/)|
 |Laravel Scaffolding **User** and **Administrator Authentication**.|
-|User [Socialite Logins](https://github.com/laravel/socialite) ready to go - See API list used below|
-|[Google Maps API v3](https://developers.google.com/maps/documentation/javascript/) for User Location lookup and Geocoding|
-|CRUD (Create, Read, Update, Delete) Themes Management|
+|User [Socialite Logins](https://github.com/laravel/socialite) ready to go - See API list used below - OFF |
+|[Google Maps API v3](https://developers.google.com/maps/documentation/javascript/) for User Location address lookup and Geocoding to find Lat Long|
+| Leaflet Openstreet Maps used in website for Clustered map pointers |
+
 |CRUD (Create, Read, Update, Delete) User Management|
 |Robust [Laravel Logging](https://laravel.com/docs/5.7/errors#logging) with admin UI using MonoLog|
-|Google [reCaptcha Protection with Google API](https://developers.google.com/recaptcha/)|
-|User Registration with email verification|
-|Makes use of Laravel [Mix](https://laravel.com/docs/5.7/mix) to compile assets|
-|Makes use of [Language Localization Files](https://laravel.com/docs/5.7/localization)|
-|Active Nav states using [Laravel Requests](https://laravel.com/docs/5.7/requests)|
-|Restrict User Email Activation Attempts|
+|Google [reCaptcha Protection with Google API](https://developers.google.com/recaptcha/) - OFF|
+|User Registration with email verification - OFF|
+|Makes use of Laravel [Mix](https://laravel.com/docs/5.7/mix) to compile assets (npm run dev) |
+|Makes use of [Language Localization Files](https://laravel.com/docs/5.7/localization) - OFF|
+|Active Nav states using [Laravel Requests](https://laravel.com/docs/5.7/requests) |
+|Restrict User Email Activation Attempts - OFF|
 |Capture IP to users table upon signup|
 |Uses [Laravel Debugger](https://github.com/barryvdh/laravel-debugbar) for development|
-|Makes use of [Password Strength Meter](https://github.com/elboletaire/password-strength-meter)|
-|Makes use of [hideShowPassword](https://github.com/cloudfour/hideShowPassword)|
+|Makes use of [Password Strength Meter](https://github.com/elboletaire/password-strength-meter) - OFF|
+|Makes use of [hideShowPassword](https://github.com/cloudfour/hideShowPassword) |
 |User Avatar Image AJAX Upload with [Dropzone.js](https://www.dropzonejs.com/#configuration)|
 |User Gravatar using [Gravatar API](https://github.com/creativeorange/gravatar)|
 |User Password Reset via Email Token|
@@ -94,7 +79,7 @@ Laravel 5.7 with user authentication, registration with email confirmation, soci
 |User Delete with Goodbye email|
 |User Restore Deleted Account|
 |Activity Logging using [Laravel-logger](https://github.com/jeremykenedy/laravel-logger)|
-|Optional 2-step account login verfication with [Laravel 2-Step Verification](https://github.com/jeremykenedy/laravel2step)|
+|Optional 2-step account login verfication with [Laravel 2-Step Verification](https://github.com/jeremykenedy/laravel2step) - OFF|
 |Uses [Laravel PHP Info](https://github.com/jeremykenedy/laravel-phpinfo) package|
 
 ### Installation Instructions
@@ -105,7 +90,7 @@ Laravel 5.7 with user authentication, registration with email confirmation, soci
     * ```\q```
 3. From the projects root run `cp .env.example .env`
 4. Configure your `.env` file
-5. Run `composer update` from the projects root folder
+5. Run `composer install` from the projects root folder
 6. From the projects root folder run:
 ```
 php artisan vendor:publish --tag=laravelroles &&
@@ -119,7 +104,8 @@ php artisan vendor:publish --tag=laravel2step
 10. From the projects root folder run `composer dump-autoload`
 11. From the projects root folder run `php artisan db:seed`
 
-For Charts  
+For Charts 
+``` 
 composer require consoletvs/charts:6.*
 
 Register the service provider in the file located at: config/app.php in the providers key.
@@ -131,7 +117,7 @@ php artisan make:chart ReportChart Chartjs
 
 in controller:
 use App\Charts\ReportChart;
-
+```
 
 12. Compile the front end assets with [npm run dev](#using-npm) or [yarn dev](#using-yarn).
 
@@ -169,10 +155,6 @@ use App\Charts\ReportChart;
 |:------------|:------------|:------------|
 |user@user.com|password|User Access|
 |admin@admin.com|password|Admin Access|
-
-##### Themes Seed List
-  * [ThemesTableSeeder](https://github.com/jeremykenedy/laravel-auth/blob/master/database/seeds/ThemesTableSeeder.php)
-  * NOTE: A lot of themes render incorrectly on Bootstrap 4 since their core was built to override Bootstrap 4. These will be updated soon and ones that do not render correctly will be removed from the seed. In the mean time you can remove them from the seed or manaully from the UI or database.
 
 ### Routes
 
@@ -531,45 +513,8 @@ INSTAGRAM_REDIRECT_URI=http://laravel-authentication.local/social/handle/instagr
 * Added Google Maps API v3 for User Location Map with Options
 * Added CRUD(Create, Read, Update, Delete) User Management
 
-### Screenshots
-* (To be updated...)
-![Login](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/1laravel-auth2-login.jpg)
-![Register](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/2laravel-auth2-register.jpg)
-![Registration Confirmation](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/3laravel-auth2-account-req-activation.jpg)
-![Registration Email](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/4laravel-auth2-activation-email.jpg)
-![Registration Complete](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/5laravel-auth2-userhome-with-flash-success.jpg)
-![Intial User Profile](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/6laravel-auth2-profile-mapless.jpg)
-![Edit User Profile](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/7laravel-auth2-profile-edit.jpg)
-![Find Location Using Google Maps API v3](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/8laravel-auth2-edit-profile-lookup.jpg)
-![Profile Updated](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/9laravel-auth2-flash-success.jpg)
-![Profile Semi-completed](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/10laravel-auth2-profile-with-map.jpg)
 
-![Admin Panel Users List](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/11laravel-auth2-users-list.jpg)
-![Admin Panel Delete User](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/12laravel-auth2-modal-delete.jpg)
-![Admin Panel Flash Error](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/13laravel-auth2-flash-error.jpg)
-![Admin Panel Show User](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/14laravel-auth2-show-edit.jpg)
-![Admin Panel Edit User](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/15laravel-auth2-edit-user.jpg)
-![Admin Panel Save Edits](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/16laravel-auth2-modal-save.jpg)
-![Admin Panel Create User](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-auth/17laravel-auth-create-user.jpg)
-
-![dashboard](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-logger/1-dashboard.jpg)
-![drilldown](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-logger/2-drilldown.jpg)
-![confirm-clear](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-logger/3-confirm-clear.jpg)
-![log-cleared-msg](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-logger/4-log-cleared-msg.jpg)
-![cleared-log](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-logger/5-cleared-log.jpg)
-![confirm-restore](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-logger/5-confirm-restore.jpg)
-![confirm-destroy](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-logger/6-confirm-destroy.jpg)
-![success-destroy](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-logger/7-success-destroy.jpg)
-![success-restored](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-logger/8-success-restored.jpg)
-![cleared-drilldown](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-logger/9-cleared-drilldown.jpg)
-
-![Verification Page](https://s3-us-west-2.amazonaws.com/github-project-images/laravel2step/1-verification-page.jpeg)
-![Resent Email Modal](https://s3-us-west-2.amazonaws.com/github-project-images/laravel2step/2-verification-email-resent.jpeg)
-![Lock Warning Modal](https://s3-us-west-2.amazonaws.com/github-project-images/laravel2step/3-lock-warning.jpeg)
-![Locked Page](https://s3-us-west-2.amazonaws.com/github-project-images/laravel2step/4-lock-screen.jpeg)
-![Verification Email](https://s3-us-west-2.amazonaws.com/github-project-images/laravel2step/5-verification-email.jpeg)
-
-### File Tree
+### Rough File Tree
 ```
 laravel-auth
 ├── .env.example

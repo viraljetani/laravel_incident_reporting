@@ -146,12 +146,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
             'edit' => 'posts.edit',
             'update' => 'posts.update',
         ],
-        'only' => [
-            
-            'create' => 'posts.create',
-            'edit' => 'posts.edit',
-            'update' => 'posts.update',
-        ],
+        
         'except' => ['index'],
     ]);
     
