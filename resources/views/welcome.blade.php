@@ -29,46 +29,23 @@
 
 
 <script type="text/javascript">
-
-    @if(isset($posts)) 
-        var addressPoints = [];
-        var geocoder = new google.maps.Geocoder();
-        @foreach($posts as $key => $post)
-        var address = '{{ $post->location }}';
-                geocoder.geocode( { 'address': address}, function(results, status) {
-
-                if (status == google.maps.GeocoderStatus.OK) {
-                var latitude = results[0].geometry.location.lat();
-                var longitude = results[0].geometry.location.lng();
-            }
-
-            //var latlong = "{lat: latitude, lng: longitude},";
-            /* var singleObj = {}
-            singleObj['lat'] = latitude;
-            singleObj['long'] = longitude; */
-            var cords = [latitude,longitude];
-            addressPoints.push(cords);
-        });
-        @endforeach
-        console.log(addressPoints);
-    @endif
-/* var addressPoints = [
-[-37.8210922667, 175.2209316333],
-[-37.8210819833, 175.2213903167],
-[-37.8210881833, 175.2215004833],
-[-37.8211946833, 175.2213655333],
-[-37.8209458667, 175.2214051333],
-[-37.8208292333, 175.2214374833, "<h1>title</h1>"],
+var addressPoints = [
+[-37.8210922667, 175.2209316333, "<h2>title</h2><p>point data</p>"],
+[-37.8210819833, 175.2213903167, "<h2>title</h2><p>point data</p>"],
+[-37.8210881833, 175.2215004833, "<h2>title</h2><p>point data</p>"],
+[-37.8211946833, 175.2213655333, "<h2>title</h2><p>point data</p>"],
+[-37.8209458667, 175.2214051333, "<h2>title</h2><p>point data</p>"],
+[-37.8208292333, 175.2214374833, "<h2>title</h2><p>point data</p>"],
 
 [-37.8194342167, 175.22322975, "9"]
-]; */
+];
     var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
         }),
-        latlng = L.latLng(-13.2543, 34.3015);
+        latlng = L.latLng(-37.82, 175.24);
 
-    var map = L.map('map-canvas', {center: latlng, zoom: 6, layers: [tiles]});
+    var map = L.map('map-canvas', {center: latlng, zoom: 13, layers: [tiles]});
 
     var markers = L.markerClusterGroup();
     

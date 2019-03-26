@@ -151,6 +151,7 @@ return [
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
+        Spatie\Geocoder\GeocoderServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -230,6 +231,7 @@ return [
         'Image'        => Intervention\Image\Facades\Image::class,
         'Uuid'         => Webpatser\Uuid\Uuid::class,
         'Excel'        => Maatwebsite\Excel\Facades\Excel::class,
+        'Geocoder'     => Spatie\Geocoder\Facades\Geocoder::class,
     ],
 
 ];
