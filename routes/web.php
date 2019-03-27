@@ -142,7 +142,6 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
     
     Route::resource('posts', 'PostController', [
         'names' => [
-            
             'create' => 'posts.create',
             'edit' => 'posts.edit',
             'update' => 'posts.update',
