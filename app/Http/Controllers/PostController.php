@@ -72,6 +72,7 @@ class PostController extends Controller
             'rgba(153, 102, 255, 1)',
             'rgba(255, 159, 64, 1)'
         ]]);
+        $chart->displayAxes(true);
         //dd($chart);
         $incidentByType = PostType::withCount(['posts'])->get()->toArray();
         //dd($incidentByType);
@@ -99,6 +100,7 @@ class PostController extends Controller
             'rgba(153, 102, 255, 1)',
             'rgba(255, 159, 64, 1)'
         ]]);
+        $chart2->displayAxes(true);
        
         // Pie Chart
         $victims = Post::select('victims', DB::raw('count(*) as posts_count'))
@@ -138,8 +140,10 @@ class PostController extends Controller
             'rgba(75, 192, 192, 1)',
             'rgba(153, 102, 255, 1)',
             'rgba(255, 159, 64, 1)'
-        ]]);
+        ],
+    ]);
         $chart3->title("Total % of Victim Types");
+        $chart3->displayAxes(false,false);
 
         return view('posts.reports',compact('chart','chart2','chart3'));
 

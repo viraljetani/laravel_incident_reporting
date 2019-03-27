@@ -9,23 +9,23 @@
 @endsection --}}
 
 @section('content')
-            <div class="col-md-10 offset-md-1 col-xs-10 offset-xs-1">
+            <div class="col-12 p-4 ">
                 <br><h1>Incident Reports</h1>
             </div>
-			<div class="col-4 p-5">
+			<div class="col-md-6 p-5">
 
                 <div id="app">
                     {!! $chart->container() !!}
                 </div>
             </div>
-            <div class="col-4 p-5"> 
-                <div id="app3">
-                    {!! $chart3->container() !!}
-                </div>
-            </div>
-            <div class="col-4 p-5">
+            <div class="col-md-6 p-5"> 
                 <div id="app2">
                     {!! $chart2->container() !!}
+                </div>
+            </div>
+            <div class="col-md-6 p-5">
+                <div id="app3">
+                    {!! $chart3->container() !!}
                 </div>
 
             </div>
