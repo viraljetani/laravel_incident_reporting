@@ -37,7 +37,7 @@ composer.lock
 /public/storage
 /storage/*.key
 /vendor
-!/vendor/consoletvs/**
+!/vendor/consoletvs/*
 /storage/debugbar
 /storage/framework
 /storage/logs
