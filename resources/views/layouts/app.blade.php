@@ -66,9 +66,7 @@
                         <div class="container-fluid p-0">
                             
                             <div class="row no-gutters">
-                                <div class="col-12">
-                                    @include('partials.form-status')
-                                </div>
+                                
                                 @yield('content')
 
                             </div>

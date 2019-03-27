@@ -180,7 +180,7 @@ class PostController extends Controller
 
         // Redirect
         $request->session()->flash('message', 'Data was Imported!');
-        return redirect()->to('posts.data');
+        return redirect()->to('posts/data');
     }
 
     /**
