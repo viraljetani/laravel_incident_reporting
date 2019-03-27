@@ -43,9 +43,9 @@ var addressPoints = [
             maxZoom: 18,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
         }),
-        latlng = L.latLng(-37.82, 175.24);
+        latlng = L.latLng(-13.2543, 34.3015);
 
-    var map = L.map('map-canvas', {center: latlng, zoom: 13, layers: [tiles]});
+    var map = L.map('map-canvas', {center: latlng, zoom: 7, layers: [tiles]});
 
     var markers = L.markerClusterGroup();
     
