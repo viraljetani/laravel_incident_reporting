@@ -22,7 +22,11 @@
                             <p class="meta text-muted"><span class="author">Posted By <b>{{$post->cso_name}}</b></span> <span class="pull-right dateTime">{{Carbon\Carbon::parse($post->post_date)->diffForHumans()}} - {{$post->post_time}}</span></p>
                             <h3>{{$post->postType->name}}</h3>
                             <p class="excerpt">{{$post->details}}</p>
-                            
+                            {!! $post->responsible ? "<p class='small'>Who is Responsible: $post->responsible </p>" : '' !!}
+                            {!! "<p class='small'>Male / Female Perpetrators: $post->male_perpetrators / $post->female_perpetrators </p>" !!}
+                            {!! "<p class='small'>Victims: $post->victims [Male:$post->male_victims Female:$post->female_victims] </p>" !!}
+                            {!! $post->where_happened ? "<p class='small'>Where Incident happened?: $post->where_happened </p>" : '' !!}
+                            {!! $post->weapons_used ? "<p class='small'>Weapons Used: $post->weapons_used </p>" : '' !!}
                             <p class="post-location text-muted"><i class="fa fa-map-marker"></i> {{$post->location}} </p>
                             <p class="text-muted"><i class="fa fa-map-pin"></i> {{$post->district->name}}</p>
                         </article>
