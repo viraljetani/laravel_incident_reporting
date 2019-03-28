@@ -29,16 +29,7 @@
 
 
 <script type="text/javascript">
-var addressPoints = [
-[-37.8210922667, 175.2209316333, "<h2>title</h2><p>point data</p>"],
-[-37.8210819833, 175.2213903167, "<h2>title</h2><p>point data</p>"],
-[-37.8210881833, 175.2215004833, "<h2>title</h2><p>point data</p>"],
-[-37.8211946833, 175.2213655333, "<h2>title</h2><p>point data</p>"],
-[-37.8209458667, 175.2214051333, "<h2>title</h2><p>point data</p>"],
-[-37.8208292333, 175.2214374833, "<h2>title</h2><p>point data</p>"],
-
-[-37.8194342167, 175.22322975, "9"]
-];
+    //var addressPoints;
     var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
@@ -46,7 +37,23 @@ var addressPoints = [
         latlng = L.latLng(-13.2543, 34.3015);
 
     var map = L.map('map-canvas', {center: latlng, zoom: 7, layers: [tiles]});
-
+    var points = function () {
+        var tmp = null;
+        $.ajax({
+        type: "GET",
+        global:false,
+        async: false,
+        url: "{{ route('maps.data')}}",
+        datatype: "json",
+        success: function(data) {
+            
+                tmp = data;
+                //alert(tmp);
+            }
+        });
+        return tmp;
+    }();
+    var addressPoints = JSON.parse(points);
     var markers = L.markerClusterGroup();
     
     for (var i = 0; i < addressPoints.length; i++) {
@@ -56,7 +63,6 @@ var addressPoints = [
         marker.bindPopup(title);
         markers.addLayer(marker);
     }
-
     map.addLayer(markers);
 
 </script>

@@ -10,6 +10,7 @@ use App\Charts\ReportChart;
 use App\District;
 use App\PostType;
 use Illuminate\Support\Facades\DB;
+use Spatie\Geocoder\Facades\Geocoder;
 
 class PostController extends Controller
 {
@@ -148,6 +149,29 @@ class PostController extends Controller
         return view('posts.reports',compact('chart','chart2','chart3'));
 
         
+    }
+
+    public function mapsData () {
+
+        $client = new \GuzzleHttp\Client();
+
+        $geocoder = new \Spatie\Geocoder\Geocoder($client);
+
+        $geocoder->setApiKey(config('geocoder.key'));
+
+        $posts = Post::with('postType','district')->orderBy('post_date', 'DESC')->orderBy('location')->get();
+        //dd($posts);
+        $cords = array();
+        foreach($posts as $key => $post) {
+            if(isset($post->location)) {
+                $latlong = $geocoder->getCoordinatesForAddress($post->location);
+                $cords[$key][] = $latlong["lat"];
+                $cords[$key][] = $latlong["lng"];
+                $cords[$key][] = "<h5>$post->details</h5><p>$post->location</p>";
+            }
+        }
+        return json_encode($cords);
+
     }
 
     /**

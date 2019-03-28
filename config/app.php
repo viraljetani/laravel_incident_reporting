@@ -151,7 +151,7 @@ return [
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
-        Spatie\Geocoder\GeocoderServiceProvider::class,
+        
 
         /*
          * Application Service Providers...
@@ -174,6 +174,7 @@ return [
         App\Providers\LocalEnvironmentServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         jeremykenedy\laravelexceptionnotifier\LaravelExceptionNotifier::class,
+        Spatie\Geocoder\GeocoderServiceProvider::class,
 
     ],
 
