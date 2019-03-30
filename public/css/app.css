@@ -17303,16 +17303,15 @@ body a:hover {
   color: #fff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  top: 45px;
-  left: 0;
-  bottom: 0;
-  display: block;
 }
 
 #sidebar.active {
   min-width: 80px;
   max-width: 80px;
   text-align: center;
+  top: 49px;
+  left: 0;
+  bottom: 0;
 }
 
 #sidebar.active .sidebar-header strong {

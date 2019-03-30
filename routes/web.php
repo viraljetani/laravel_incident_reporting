@@ -15,8 +15,8 @@
 // Authentication Routes
 Auth::routes();
 // Homepage Route
-//Route::get('/', 'WelcomeController@welcome')->name('welcome');
-Route::get('/', 'PostController@reports')->name('reports');
+Route::get('/', 'WelcomeController@welcome')->name('welcome');
+Route::get('/reports', 'PostController@reports')->name('reports');
 Route::get('/map', 'WelcomeController@welcome')->name('welcome');
 
 Route::get('posts/data', 'PostController@index')->name('posts.data');

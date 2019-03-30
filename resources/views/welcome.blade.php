@@ -36,7 +36,7 @@
         }),
         latlng = L.latLng(-13.2543, 34.3015);
 
-    var map = L.map('map-canvas', {center: latlng, zoom: 7, layers: [tiles]});
+    var map = L.map('map-canvas', {center: latlng, zoom: 8, layers: [tiles]});
     var points = function () {
         var tmp = null;
         $.ajax({
