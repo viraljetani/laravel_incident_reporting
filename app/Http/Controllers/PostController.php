@@ -48,30 +48,12 @@ class PostController extends Controller
         $chart = new ReportChart;
         $chart->labels($data1->keys());
         $chart->dataset('Total Incidents in a District', 'bar', $data1->values())->options(['backgroundColor' => [
-            'rgba(255, 99, 132, 0.9)',
-            'rgba(54, 162, 235, 0.9)',
-            'rgba(255, 206, 86, 0.9)',
-            'rgba(75, 192, 192, 0.9)',
-            'rgba(153, 102, 255, 0.9)',
-            'rgba(255, 99, 132, 0.9)',
-            'rgba(54, 162, 235, 0.9)',
-            'rgba(255, 206, 86, 0.9)',
-            'rgba(75, 192, 192, 0.9)',
-            'rgba(153, 102, 255, 0.9)',
-            'rgba(255, 159, 64, 0.9)'
+            
+            
         ],
         'borderColor' => [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
+            
+            
         ]]);
         $chart->displayAxes(true);
         //dd($chart);
@@ -86,20 +68,10 @@ class PostController extends Controller
         $chart2 = new ReportChart;
         $chart2->labels($data2->keys());
         $chart2->dataset('Total Incidents by Incident Types', 'bar', $data2->values())->options(['backgroundColor' => [
-            'rgba(255, 99, 132, 0.9)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
+            
         ],
         'borderColor' => [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
+            
         ]]);
         $chart2->displayAxes(true);
        
