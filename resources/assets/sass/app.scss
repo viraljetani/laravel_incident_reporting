@@ -1,44 +1,27 @@
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
-// Variables
+// Import Custom SB Admin 2 Variables (Overrides Default Bootstrap Variables)
 @import "variables";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-/* .navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-} */
-
 // Font Awesome
-@import '~font-awesome/scss/font-awesome';
+@import '../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome';
+@import '../../../node_modules/@fortawesome/fontawesome-free/scss/regular';
+@import '../../../node_modules/@fortawesome/fontawesome-free/scss/solid';
+@import '../../../node_modules/@fortawesome/fontawesome-free/scss/brands';
 
-// Dropzone
-@import "~dropzone/dist/basic";
-@import "~dropzone/dist/dropzone";
+// Import Custom SB Admin 2 Mixins and Components
+@import "mixins.scss";
+@import "global.scss";
+@import "utilities.scss";
 
-// Bootstrap Social Media Buttons - https://github.com/lipis/bootstrap-social
-@import "~bootstrap-social/bootstrap-social.css";
-
-@import "mixins";
-@import "margins";
-@import "helpers";
-@import "typography";
-@import "buttons";
-@import "badges";
-@import "panels";
-@import "wells";
-@import "modals";
-@import "socials";
-@import "forms";
-@import "lists";
-@import "avatar";
-@import "logs";
-@import "password";
-@import "hideShowPassword";
-@import "visibility";
-@import "user-profile";
+// Custom Components
+@import "dropdowns.scss";
+@import "navs.scss";
+@import "buttons.scss";
+@import "cards.scss";
+@import "charts.scss";
+@import "login.scss";
+@import "error.scss";
+@import "footer.scss";
 @import "general";
-@import "posts";

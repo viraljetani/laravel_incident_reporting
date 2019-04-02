@@ -123,6 +123,103 @@ class PostController extends Controller
         
     }
 
+    public function reportsIncidentByDistrict() {
+        $districts = District::withCount(['posts'])->get()->toArray();
+        //dd($districts);
+        $data1 = collect([]);
+        foreach($districts as $key => $district){
+            
+            $data1->put($district['name'] , $district['posts_count']);
+        }
+        //dd($data->values());
+        $chart = new ReportChart;
+        $chart->labels($data1->keys());
+        $chart->dataset('Total Incidents in a District', 'bar', $data1->values())->options(['backgroundColor' => [
+            
+            
+        ],
+        'borderColor' => [
+            
+            
+        ]]);
+        $chart->displayAxes(true);
+        
+
+        return view('posts.reports-incident-district',compact('chart'));
+
+    }
+
+    public function reportsIncidentByType() {
+       
+        $incidentByType = PostType::withCount(['posts'])->get()->toArray();
+        //dd($incidentByType);
+        $data2 = collect([]);
+        foreach($incidentByType as $key => $incidentType){
+            
+            $data2->put($incidentType['name'] , $incidentType['posts_count']);
+        }
+        //dd($data->values());
+        $chart2 = new ReportChart;
+        $chart2->labels($data2->keys());
+        $chart2->dataset('Total Incidents by Incident Types', 'bar', $data2->values())->options(['backgroundColor' => [
+            
+        ],
+        'borderColor' => [
+            
+        ]]);
+        $chart2->displayAxes(true);
+
+        return view('posts.reports-incident-type',compact('chart2'));
+    }
+
+    public function reportsIncidentVictims() {
+        // Pie Chart
+        $victims = Post::select('victims', DB::raw('count(*) as posts_count'))
+        ->groupBy('victims')
+        ->get()->toArray();;
+        //dd($victims);
+        $data3 = collect([]);
+        foreach($victims as $key => $victim){
+            
+            $data3->put($victim['victims'] , $victim['posts_count']);
+        }
+        //dd($data3->values());
+        $chart3 = new ReportChart;
+        $chart3->labels($data3->keys());
+        $chart3->dataset('Total % of Incidents by Incident Types', 'pie', $data3->values())->options(['backgroundColor' => [
+            'rgba(255, 99, 132, 0.9)',
+            'rgba(54, 162, 235, 0.9)',
+            'rgba(255, 206, 86, 0.9)',
+            'rgba(75, 192, 192, 0.9)',
+            'rgba(153, 102, 255, 0.9)',
+            'rgba(255, 99, 132, 0.9)',
+            'rgba(54, 162, 235, 0.9)',
+            'rgba(255, 206, 86, 0.9)',
+            'rgba(75, 192, 192, 0.9)',
+            'rgba(153, 102, 255, 0.9)',
+            'rgba(255, 159, 64, 0.9)'
+        ],
+        'borderColor' => [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ],
+    ]);
+        $chart3->title("Total % of Victim Types");
+        $chart3->displayAxes(false,false);
+        return view('posts.reports-incident-victims',compact('chart3'));
+    }
+
+
+
     public function mapsData () {
 
         $client = new \GuzzleHttp\Client();
