@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('template_title')
 	Home
@@ -9,11 +9,22 @@
 @endsection --}}
 
 @section('content')
-    <div class="col-12" class="map-canvas-container">
-        @if(config('settings.googleMapsAPIStatus'))
-            <div id="map-canvas"></div>                                
-        @endif
-    </div>
+
+ <!-- Begin Page Content -->
+ <div class="container-fluid p-1">
+
+        <!-- Content Row -->
+        <div class="row">
+            <div class="map-canvas-container">
+                @if(config('settings.googleMapsAPIStatus'))
+                    <div id="map-canvas"></div>                                
+                @endif
+            </div>
+        </div>
+
+</div>
+        <!-- /.container-fluid -->
+    
 @endsection
 
 @section('footer_scripts')

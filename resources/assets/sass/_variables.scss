@@ -1,63 +1,76 @@
-// Body
-$white: #ffffff;
-$dark: #373E46;
-$body-bg: #F1F1F4;
+// Override Bootstrap default variables here
+// Do not edit any of the files in /vendor/bootstrap/scss/!
 
-// Social Media
-$facebook: #4863ae;
-$twitter: #46c0fb;
-$google: #DD4B39;
-$github: #4183C4;
+// Color Variables
+// Bootstrap Color Overrides
 
-// Brands
-$brand-primary: #3097D1;
-$brand-info: #8eb4cb;
-$brand-success: #2ab27b;
-$brand-warning: #cbb956;
-$brand-danger: #bf5329;
-$text-color: #636b6f;
+$white: #fff !default;
+$gray-100: #f8f9fc !default;
+$gray-200: #eaecf4 !default;
+$gray-300: #dddfeb !default;
+$gray-400: #d1d3e2 !default;
+$gray-500: #b7b9cc !default;
+$gray-600: #858796 !default;
+$gray-700: #6e707e !default;
+$gray-800: #5a5c69 !default;
+$gray-900: #3a3b45 !default;
+$black: #000 !default;
 
-$yellow: #FFC334;
-$dark-link: #C7CCD4;
+$blue: #4e73df !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #e74a3b !default;
+$orange: #fd7e14 !default;
+$yellow: #f6c23e !default;
+$green: #1cc88a !default;
+$teal: #20c9a6 !default;
+$cyan: #36b9cc !default;
+
+// Custom Colors
+$brand-google: #ea4335;
+$brand-facebook: #3b5998;
+
+// Set Contrast Threshold
+$yiq-contrasted-threshold: 195 !default;
 
 // Typography
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+$body-color: $gray-600 !default;
+
+$font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji' !default;
+
+$font-weight-light: 300 !default;
+// $font-weight-base: 400;
+$headings-font-weight: 400 !default;
+
+// Shadows
+$box-shadow-sm: 0 0.125rem 0.25rem 0 rgba($gray-900, .2) !default;
+$box-shadow: 0 0.15rem 1.75rem 0 rgba($gray-900, .15) !default;
+// $box-shadow-lg: 0 1rem 3rem rgba($black, .175) !default;
+
+// Borders Radius
+$border-radius: 0.35rem !default;
+$border-color: darken($gray-200, 2%);
+
+// Spacing Variables
+// Change below variable if the height of the navbar changes
+$topbar-base-height: 4.375rem;
+// Change below variable to change the width of the sidenav
+$sidebar-base-width: 14rem;
+// Change below variable to change the width of the sidenav when collapsed
+$sidebar-collapsed-width: 6.5rem;
+
+// Card
+$card-cap-bg: $gray-100;
+$card-border-color: $border-color;
+
+// Adjust column spacing for symmetry
+$spacer: 1rem;
+$grid-gutter-width: $spacer * 1.5;
 
 // Transitions
-$transitionSpeed: 0.35s;
+$transition-collapse: height .15s ease !default;
 
-// Radius'
-$standard-radius: 3px;
-
-// MQ's
-$mq-tiny: 320px;
-$phone: 480px;
-$bs4-phone: 576px;
-$tablet: 767px;
-$desktop: 992px;
-$lg-desktop: 1200px;
-
-// Margins and Padding
-$num-of-classes: 5;
-$directions: ('top', 'bottom', 'left', 'right');
-$types: ('margin', 'padding');
-$queries: (
-    $mq-tiny: 'xxs',
-    $phone: 'xs',
-    $tablet: 'sm',
-    $desktop: 'md',
-    $lg-desktop: 'lg'
-);
-
-// // Buttons
-$btn-default-color: $text-color;
-
-// Inputs
-$input-border: lighten($text-color, 40%);
-$input-border-focus: lighten($brand-primary, 25%);
-$input-color-placeholder: lighten($text-color, 30%);
-
-// Panels / Cards
-$panel-default-heading-bg: $white;
+// Dropdowns
+$dropdown-font-size: 0.85rem;
+$dropdown-border-color: $border-color;

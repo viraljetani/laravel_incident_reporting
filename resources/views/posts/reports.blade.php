@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('template_title')
 	Reports
@@ -9,8 +9,10 @@
 @endsection --}}
 
 @section('content')
-            <div class="col-12 p-4 ">
-                <br><h1>Incident Reports</h1>
+    <div class="container-fluid mt-4">
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">Incident Reports</h1>
             </div>
 			<div class="col-md-6 p-5">
 
@@ -29,6 +31,7 @@
                 </div>
 
             </div>
+    </div>
                 <script>
                     var app = new Vue({
                         el: '#app',
