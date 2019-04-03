@@ -12,9 +12,9 @@
     <div class="container-fluid mt-4">
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Impact by Incidents</h1>
+                <h1 class="h3 mb-0 text-gray-900">Impact by Incidents</h1>
             </div>
-			<div class="col-md-6 p-5">
+			<div class="col-lg-12 p-5">
 
                 <div id="app">
                     {!! $chart3->container() !!}
