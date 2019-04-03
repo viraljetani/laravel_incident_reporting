@@ -34,8 +34,13 @@ class PostsImport implements ToCollection
                 //var_dump($post);
                 //print_r($post[$key-1]); echo "<br><br>"; 
                 if(isset($post[$key-1]['Unique Record Number (URN)']) && isset($post[$key-1]['Location']) ) {
-                    $p = Post::withTrashed()->firstOrNew(['unique_record_number' => intval($post[$key-1]['Unique Record Number (URN)'])]);
-                    $p->cso_name = $post[$key-1]['CSO Name']; 
+                    $p = Post::withTrashed()->firstOrNew(
+                        [
+                            'unique_record_number' => intval($post[$key-1]['Unique Record Number (URN)']),
+                            'cso_name'             => $post[$key-1]['CSO Name']
+                        ]
+                    );
+                    
                     $p->location = $post[$key-1]['Location'];
                     
                     $date =  \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($post[$key-1]['Date']);
