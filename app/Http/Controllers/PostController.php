@@ -136,7 +136,7 @@ class PostController extends Controller
         $chart->labels($data1->keys());
         $chart->dataset('Total Incidents in a District', 'bar', $data1->values())->options([
             'plugins' => [
-                'colorschemes' => ['scheme' => 'office.Blue6']
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
         ]);
         $chart->displayAxes(true);
@@ -160,7 +160,7 @@ class PostController extends Controller
         $chart2->labels($data2->keys());
         $chart2->dataset('Total Incidents by Incident Types', 'bar', $data2->values())->options([
             'plugins' => [
-                'colorschemes' => ['scheme' => 'office.Blue6']
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
         ]);
         $chart2->displayAxes(true);
@@ -205,12 +205,18 @@ class PostController extends Controller
         }
         //dd($data3->values());
         $chart3 = new ReportChart;
-        $chart3->labels($data3->keys());
-        $chart3->dataset('Total % of Incidents by Incident Types', 'pie', $data3->values())->options([
+        $chart3->labels(['Male','Female']);
+        $chart3->dataset('Victims By Gender', 'pie', [34, 43])->options([
             'plugins' => [
-                'colorschemes' => ['scheme' => 'office.Blue6']
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
         ]);
+        /* $chart3->labels($data3->keys());
+        $chart3->dataset('Total % of Incidents by Incident Types', 'pie', $data3->values())->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
+            ],
+        ]); */
         $chart3->title("Victims By Gender");
         $chart3->displayAxes(false,false);
         return view('posts.reports-victim-by-gender',compact('chart3'));
@@ -226,12 +232,25 @@ class PostController extends Controller
         }
         //dd($data->values());
         $chart = new ReportChart;
-        $chart->labels($data1->keys());
-        $chart->dataset('Perpetrators by Gender', 'bar', $data1->values())->options([
+        $chart->labels(['Lilongwe','Mwanza','Nsanje','Mangochi']);
+        $chart->dataset('Male', 'bar', [34, 43, 23, 43])->options([
             'plugins' => [
-                'colorschemes' => ['scheme' => 'office.Blue6']
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
         ]);
+        //$chart->labels(['District']);
+        $chart->dataset('Female', 'bar', [11, 24, 21,54])->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
+            ],
+        ]);
+        
+        /* $chart->labels($data1->keys());
+        $chart->dataset('Perpetrators by Gender', 'bar', $data1->values())->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
+            ],
+        ]); */
         $chart->displayAxes(true);
         
 
@@ -252,12 +271,18 @@ class PostController extends Controller
         }
         //dd($data3->values());
         $chart3 = new ReportChart;
-        $chart3->labels($data3->keys());
-        $chart3->dataset('Total % of Incidents by Incident Types', 'pie', $data3->values())->options([
+        $chart3->labels(['Campain Rally Disrupted', 'Voting Cancelled']);
+        $chart3->dataset('Incidents Impact', 'pie', [1, 24])->options([
             'plugins' => [
-                'colorschemes' => ['scheme' => 'office.Blue6']
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
         ]);
+       /*  $chart3->labels($data3->keys());
+        $chart3->dataset('Total % of Incidents by Incident Types', 'pie', $data3->values())->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
+            ],
+        ]); */
         $chart3->title("Impact of Incidents");
         $chart3->displayAxes(false,false);
         return view('posts.reports-impact-incidents',compact('chart3'));
@@ -278,7 +303,7 @@ class PostController extends Controller
         $chart->labels(['12/2/19', '13/2/19', '14/2/19', '15/2/19']);
         $chart->dataset('Incidents', 'line', [1, 24, 32, 41])->options([
             'plugins' => [
-                'colorschemes' => ['scheme' => 'office.Blue6']
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
         ]);
         //$chart->dataset('My dataset 2', 'line', [4, 3, 2, 1]);
