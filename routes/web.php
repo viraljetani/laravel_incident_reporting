@@ -21,6 +21,7 @@ Route::get('/reports', 'PostController@reports')->name('reports');
 Route::get('/reports/incidents-by-district', 'PostController@reportsIncidentByDistrict')->name('reports.incident.by.district');
 Route::get('/reports/incidents-by-type', 'PostController@reportsIncidentByType')->name('reports.incident.by.type');
 Route::get('/reports/incident-victims', 'PostController@reportsIncidentVictims')->name('reports.incident.victims');
+Route::get('/reports/incident-victims-gender', 'PostController@reportsVictimsGender')->name('reports.victims.by.gender');
 
 
 Route::get('/map', 'WelcomeController@welcome')->name('welcome');

@@ -46,11 +46,13 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Report Types:</h6>
+            <a class="collapse-item" href="{{ route('posts.data') }}">Raw Data</a>
             <a class="collapse-item" href="{{ route('reports.incident.by.district') }}">Incidents by Districts</a>
             <a class="collapse-item" href="{{ route('reports.incident.by.type') }}">Total Incidents by Type</a>
             <a class="collapse-item" href="{{ route('reports.incident.victims') }}">Incident Victims</a>
-            <a class="collapse-item" href="{{ route('posts.data') }}">Raw Data</a>
-            <a class="collapse-item" href="{{ route('reports') }}">Charts</a>
+            <a class="collapse-item" href="{{ route('reports.victims.by.gender') }}">Victims By Gender</a>
+            
+            {{-- <a class="collapse-item" href="{{ route('reports') }}">Charts</a> --}}
         </div>
         </div>
     </li>
