@@ -17,11 +17,14 @@ Auth::routes();
 // Homepage Route
 //Route::get('/', 'WelcomeController@welcome')->name('welcome');
 Route::get('/', 'DashboardController@dashboard')->name('welcome');
+
 Route::get('/reports', 'PostController@reports')->name('reports');
 Route::get('/reports/incidents-by-district', 'PostController@reportsIncidentByDistrict')->name('reports.incident.by.district');
 Route::get('/reports/incidents-by-type', 'PostController@reportsIncidentByType')->name('reports.incident.by.type');
 Route::get('/reports/incident-victims', 'PostController@reportsIncidentVictims')->name('reports.incident.victims');
 Route::get('/reports/incident-victims-gender', 'PostController@reportsVictimsGender')->name('reports.victims.by.gender');
+
+Route::get('/organizations', 'OrganizationController@index')->name('organizations');
 
 
 Route::get('/map', 'WelcomeController@welcome')->name('welcome');
