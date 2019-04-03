@@ -46,27 +46,27 @@ class PostsImport implements ToCollection
                     $date =  \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($post[$key-1]['Date']);
                     $p->post_date = $date->format('Y-m-d');
                     
-                    $time = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($post[$key-1]['Time']);
+                    $time = @\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($post[$key-1]['Time']) ?? "10:00";
                     $p->post_time = $time->format('H:i');
 
-                    $p->details = $post[$key-1]['Details of Incident'];
+                    $p->details = $post[$key-1]['Details of Incident'] ?? "";
 
-                    $p->responsible = $post[$key-1]['Who is responsible for the Incident'];
-                    $p->male_perpetrators = $post[$key-1]['Number of Male Perpetrators'];
-                    $p->female_perpetrators = $post[$key-1]['Number of Female Perpetrators'];
+                    $p->responsible = $post[$key-1]['Who is responsible for the Incident'] ?? "";
+                    $p->male_perpetrators = $post[$key-1]['Number of Male Perpetrators'] ?? "";
+                    $p->female_perpetrators = $post[$key-1]['Number of Female Perpetrators'] ?? "";
                     
-                    $p->victims = $post[$key-1]['Who were the victims?'];
-                    $p->male_victims = $post[$key-1]['Number of Male Victims'];
-                    $p->female_victims = $post[$key-1]['Number of Female victims'];
-                    $p->where_happened = $post[$key-1]['Where did the incident happen?'];
-                    $p->weapons_used = $post[$key-1]['Weapons Used'];
-                    $p->impact = $post[$key-1]['What was the impact of the incident '];
-                    $p->nature_of_response = $post[$key-1]['Nature of responses undertaken '];
+                    $p->victims = $post[$key-1]['Who were the victims?'] ?? "";
+                    $p->male_victims = $post[$key-1]['Number of Male Victims'] ?? "";
+                    $p->female_victims = $post[$key-1]['Number of Female victims'] ?? "";
+                    $p->where_happened = $post[$key-1]['Where did the incident happen?']?? "";
+                    $p->weapons_used = $post[$key-1]['Weapons Used'] ?? "";
+                    $p->impact = $post[$key-1]['What was the impact of the incident '] ?? "";
+                    $p->nature_of_response = $post[$key-1]['Nature of responses undertaken '] ?? "";
 
-                    $p->response_actions = $post[$key-1]['Response Actions'];
-                    $p->responder_name = $post[$key-1]['Responder Name'];
-                    $p->feedback_on_response = $post[$key-1]['Feedback On Response'];
-                    $p->additional_follow_up = $post[$key-1]['Additional Follow Up'];
+                    $p->response_actions = $post[$key-1]['Response Actions'] ?? "";
+                    $p->responder_name = $post[$key-1]['Responder Name'] ?? "";
+                    $p->feedback_on_response = $post[$key-1]['Feedback On Response'] ?? "";
+                    $p->additional_follow_up = $post[$key-1]['Additional Follow Up'] ?? "";
                     
                     $d = District::firstOrNew(['name' => ucwords($post[$key-1]['District'])]);
                     $d->save();
