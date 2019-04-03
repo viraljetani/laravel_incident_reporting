@@ -51,6 +51,9 @@
             <a class="collapse-item" href="{{ route('reports.incident.by.type') }}">Total Incidents by Type</a>
             <a class="collapse-item" href="{{ route('reports.incident.victims') }}">Incident Victims</a>
             <a class="collapse-item" href="{{ route('reports.victims.by.gender') }}">Victims By Gender</a>
+            <a class="collapse-item" href="{{ route('reports.perpetrators.by.gender') }}">Perpetrators By Gender</a>
+            <a class="collapse-item" href="{{ route('reports.impact.by.incidents') }}">Impact by Incidents</a>
+            <a class="collapse-item" href="{{ route('reports.incidents.over.days') }}">Incidents Over Days</a>
             
             {{-- <a class="collapse-item" href="{{ route('reports') }}">Charts</a> --}}
         </div>
