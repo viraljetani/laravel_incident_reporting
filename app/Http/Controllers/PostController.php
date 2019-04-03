@@ -339,7 +339,7 @@ class PostController extends Controller
                 $latlong = $geocoder->getCoordinatesForAddress($post->location);
                 $cords[$key][] = $latlong["lat"];
                 $cords[$key][] = $latlong["lng"];
-                $cords[$key][] = "<h5>$post->details</h5><p>$post->location</p>";
+                $cords[$key][] = "<h5>" . $post->postType->name ."</h5><p>$post->location</p>";
             }
         }
         return json_encode($cords);
