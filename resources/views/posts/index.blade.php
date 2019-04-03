@@ -15,8 +15,9 @@
                 @if (Session::has('message'))
                 <div class="alert alert-info">{{ Session::get('message') }}</div>
                 @endif
-                <h2 class="m-md-4 p-md-4 m-xs-2 p-xs-2">Reported Incidents @role('admin') <a href="{{route('posts.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Import New </a> @endrole</h2>
                 @if(isset($posts))
+                <h2 class="m-md-4 p-md-4 m-xs-2 p-xs-2"> {{ $posts->count() }} Reported Incidents  @role('admin') <a href="{{route('posts.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Import New </a> @endrole</h2>
+                
                     @foreach($posts as $key => $post)
                         <article class="post-card m-md-4 p-md-4 m-xs-2 p-xs-2">
                             <p class="meta text-muted"><span class="author">Posted By <b>{{$post->cso_name}}</b></span> <span class="pull-right dateTime">{{Carbon\Carbon::parse($post->post_date)->diffForHumans()}} - {{$post->post_time}}</span></p>
