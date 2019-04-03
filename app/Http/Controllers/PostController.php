@@ -122,7 +122,7 @@ class PostController extends Controller
 
         
     }
-
+/////////////////////////////  all reports start /////////////
     public function reportsIncidentByDistrict() {
         $districts = District::withCount(['posts'])->get()->toArray();
         //dd($districts);
@@ -134,14 +134,11 @@ class PostController extends Controller
         //dd($data->values());
         $chart = new ReportChart;
         $chart->labels($data1->keys());
-        $chart->dataset('Total Incidents in a District', 'bar', $data1->values())->options(['backgroundColor' => [
-            
-            
-        ],
-        'borderColor' => [
-            
-            
-        ]]);
+        $chart->dataset('Total Incidents in a District', 'bar', $data1->values())->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'office.Blue6']
+            ],
+        ]);
         $chart->displayAxes(true);
         
 
@@ -161,12 +158,11 @@ class PostController extends Controller
         //dd($data->values());
         $chart2 = new ReportChart;
         $chart2->labels($data2->keys());
-        $chart2->dataset('Total Incidents by Incident Types', 'bar', $data2->values())->options(['backgroundColor' => [
-            
-        ],
-        'borderColor' => [
-            
-        ]]);
+        $chart2->dataset('Total Incidents by Incident Types', 'bar', $data2->values())->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'office.Blue6']
+            ],
+        ]);
         $chart2->displayAxes(true);
 
         return view('posts.reports-incident-type',compact('chart2'));
@@ -186,33 +182,11 @@ class PostController extends Controller
         //dd($data3->values());
         $chart3 = new ReportChart;
         $chart3->labels($data3->keys());
-        $chart3->dataset('Total % of Incidents by Incident Types', 'pie', $data3->values())->options(['backgroundColor' => [
-            'rgba(255, 99, 132, 0.9)',
-            'rgba(54, 162, 235, 0.9)',
-            'rgba(255, 206, 86, 0.9)',
-            'rgba(75, 192, 192, 0.9)',
-            'rgba(153, 102, 255, 0.9)',
-            'rgba(255, 99, 132, 0.9)',
-            'rgba(54, 162, 235, 0.9)',
-            'rgba(255, 206, 86, 0.9)',
-            'rgba(75, 192, 192, 0.9)',
-            'rgba(153, 102, 255, 0.9)',
-            'rgba(255, 159, 64, 0.9)'
-        ],
-        'borderColor' => [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-        ],
-    ]);
+        $chart3->dataset('Total % of Incidents by Incident Types', 'pie', $data3->values())->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'brewer.Set1-9']
+            ],
+        ]);
         $chart3->title("Total % of Victim Types");
         $chart3->displayAxes(false,false);
         return view('posts.reports-incident-victims',compact('chart3'));
@@ -232,33 +206,11 @@ class PostController extends Controller
         //dd($data3->values());
         $chart3 = new ReportChart;
         $chart3->labels($data3->keys());
-        $chart3->dataset('Total % of Incidents by Incident Types', 'pie', $data3->values())->options(['backgroundColor' => [
-            'rgba(255, 99, 132, 0.9)',
-            'rgba(54, 162, 235, 0.9)',
-            'rgba(255, 206, 86, 0.9)',
-            'rgba(75, 192, 192, 0.9)',
-            'rgba(153, 102, 255, 0.9)',
-            'rgba(255, 99, 132, 0.9)',
-            'rgba(54, 162, 235, 0.9)',
-            'rgba(255, 206, 86, 0.9)',
-            'rgba(75, 192, 192, 0.9)',
-            'rgba(153, 102, 255, 0.9)',
-            'rgba(255, 159, 64, 0.9)'
-        ],
-        'borderColor' => [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-        ],
-    ]);
+        $chart3->dataset('Total % of Incidents by Incident Types', 'pie', $data3->values())->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'office.Blue6']
+            ],
+        ]);
         $chart3->title("Victims By Gender");
         $chart3->displayAxes(false,false);
         return view('posts.reports-victim-by-gender',compact('chart3'));
@@ -275,14 +227,11 @@ class PostController extends Controller
         //dd($data->values());
         $chart = new ReportChart;
         $chart->labels($data1->keys());
-        $chart->dataset('Perpetrators by Gender', 'bar', $data1->values())->options(['backgroundColor' => [
-            
-            
-        ],
-        'borderColor' => [
-            
-            
-        ]]);
+        $chart->dataset('Perpetrators by Gender', 'bar', $data1->values())->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'office.Blue6']
+            ],
+        ]);
         $chart->displayAxes(true);
         
 
@@ -304,33 +253,11 @@ class PostController extends Controller
         //dd($data3->values());
         $chart3 = new ReportChart;
         $chart3->labels($data3->keys());
-        $chart3->dataset('Total % of Incidents by Incident Types', 'pie', $data3->values())->options(['backgroundColor' => [
-            'rgba(255, 99, 132, 0.9)',
-            'rgba(54, 162, 235, 0.9)',
-            'rgba(255, 206, 86, 0.9)',
-            'rgba(75, 192, 192, 0.9)',
-            'rgba(153, 102, 255, 0.9)',
-            'rgba(255, 99, 132, 0.9)',
-            'rgba(54, 162, 235, 0.9)',
-            'rgba(255, 206, 86, 0.9)',
-            'rgba(75, 192, 192, 0.9)',
-            'rgba(153, 102, 255, 0.9)',
-            'rgba(255, 159, 64, 0.9)'
-        ],
-        'borderColor' => [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-        ],
-    ]);
+        $chart3->dataset('Total % of Incidents by Incident Types', 'pie', $data3->values())->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'office.Blue6']
+            ],
+        ]);
         $chart3->title("Impact of Incidents");
         $chart3->displayAxes(false,false);
         return view('posts.reports-impact-incidents',compact('chart3'));
@@ -349,7 +276,11 @@ class PostController extends Controller
 
         //$chart = new SampleChart;
         $chart->labels(['12/2/19', '13/2/19', '14/2/19', '15/2/19']);
-        $chart->dataset('Incidents', 'line', [1, 24, 32, 41]);
+        $chart->dataset('Incidents', 'line', [1, 24, 32, 41])->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'office.Blue6']
+            ],
+        ]);
         //$chart->dataset('My dataset 2', 'line', [4, 3, 2, 1]);
         //$chart->labels($data1->keys());
        /*  $chart->dataset('Incidents over Dates', 'line', $data1->values())->options(['backgroundColor' => [
