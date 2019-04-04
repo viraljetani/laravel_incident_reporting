@@ -125,9 +125,9 @@
             maxZoom: 18,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
         }),
-        latlng = L.latLng(-13.2543, 34.3015);
+        latlng = L.latLng(-13.9626, 33.7741);
 
-    var map = L.map('map-canvas', {center: latlng, zoom: 8, layers: [tiles]});
+    var map = L.map('map-canvas', {center: latlng, zoom: 9, layers: [tiles]});
     var points = function () {
         var tmp = null;
         $.ajax({
