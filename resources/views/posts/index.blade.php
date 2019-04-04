@@ -37,8 +37,8 @@
                                     {!! $post->where_happened ? "<p class='small'>Where Incident happened?: $post->where_happened </p>" : '' !!}
                                     {!! $post->weapons_used ? "<p class='small'>Weapons Used: $post->weapons_used </p>" : '' !!}
                                     <hr />
-                                    <p class="post-location text-muted"><i class="fa fa-map-marker"></i> {{$post->location}} </p>
-                                    <p class="text-muted"><i class="fa fa-map-pin"></i> {{$post->district->name}}</p>
+                                    <p class="post-location text-muted"><small>{{$post->location}}</small> <br>
+                                    <i class="fa fa-map-pin"></i> {{$post->district->name}}</p>
                             </div>
                         </div>
                     @endforeach
