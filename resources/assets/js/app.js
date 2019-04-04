@@ -120,6 +120,8 @@ $(function () {
       }, 1000, 'easeInOutExpo');
       e.preventDefault();
     });
+
+    $('#myModal').modal('hide');
   
   })(jQuery); // End of use strict
   

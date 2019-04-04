@@ -15,8 +15,8 @@
 // Authentication Routes
 Auth::routes();
 // Homepage Route
-//Route::get('/', 'WelcomeController@welcome')->name('welcome');
-Route::get('/', 'DashboardController@dashboard')->name('welcome');
+Route::get('/', 'WelcomeController@welcome')->name('welcome');
+//Route::get('/', 'DashboardController@dashboard')->name('welcome');
 
 Route::get('/reports', 'PostController@reports')->name('reports');
 Route::get('/reports/incidents-by-district', 'PostController@reportsIncidentByDistrict')->name('reports.incident.by.district');

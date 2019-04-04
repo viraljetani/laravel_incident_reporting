@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('template_title')
-	Total Impact by Incidents
+	Total Impact of Incidents
 @endsection
 
 {{-- @section('template_fastload_css')
@@ -12,7 +12,7 @@
     <div class="container-fluid mt-4">
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-900">Impact by Incidents</h1>
+                <h1 class="h3 mb-0 text-gray-900">Impact Of Incidents</h1>
             </div>
 			<div class="col-lg-12 p-5">
 

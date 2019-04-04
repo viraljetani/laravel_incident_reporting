@@ -13,11 +13,27 @@
     $currentRoute = \Request::route()->getName(); @endphp
     <!-- Nav Item - Dashboard -->
    
-    <li class="nav-item @if(substr_count($currentRoute, 'welcome')) active @endif">
+    {{-- <li class="nav-item @if(substr_count($currentRoute, 'welcome')) active @endif">
         <a class="nav-link" href="{{ url('/') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
+    </li> --}}
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item @if(substr_count($currentRoute, 'welcome')) active @endif">
+        <a class="nav-link @if(substr_count($currentRoute, 'welcome')) text-warning @endif" href="{{ url('/') }}">
+        <i class="fas fa-fw fa-map-marker"></i>
+        <span>Map</span>
+        </a>
+        
+    </li>
+    <li class="nav-item @if(substr_count($currentRoute, 'posts')) active @endif">
+            <a class="nav-link @if(substr_count($currentRoute, 'posts')) text-warning @endif" href="{{ route('posts.data') }}"">
+            <i class="fas fa-fw fa-database"></i>
+            <span>Data</span>
+            </a>
+            
     </li>
 
     <!-- Divider -->
@@ -29,31 +45,23 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/map') }}">
-        <i class="fas fa-fw fa-map-marker"></i>
-        <span>Map</span>
-        </a>
-        
-    </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item @if(substr_count($currentRoute, 'reports')) active @endif">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>Reports</span>
+        <i class="fas fa-fw fa-chart-pie"></i>
+        <span class="@if(substr_count($currentRoute, 'reports')) text-warning @endif">Reports</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Report Types:</h6>
-            <a class="collapse-item" href="{{ route('posts.data') }}">Raw Data</a>
-            <a class="collapse-item" href="{{ route('reports.incident.by.district') }}">Incidents by Districts</a>
-            <a class="collapse-item" href="{{ route('reports.incident.by.type') }}">Total Incidents by Type</a>
-            <a class="collapse-item" href="{{ route('reports.incident.victims') }}">Incident Victims</a>
-            <a class="collapse-item" href="{{ route('reports.victims.by.gender') }}">Victims By Gender</a>
-            <a class="collapse-item" href="{{ route('reports.perpetrators.by.gender') }}">Perpetrators By Gender</a>
-            <a class="collapse-item" href="{{ route('reports.impact.by.incidents') }}">Impact by Incidents</a>
-            <a class="collapse-item" href="{{ route('reports.incidents.over.days') }}">Incidents Over Days</a>
+            <a class="collapse-item @if(substr_count($currentRoute, 'reports.incident.by.district')) active @endif" href="{{ route('reports.incident.by.district') }}">Incidents by Districts</a>
+            <a class="collapse-item @if(substr_count($currentRoute, 'reports.incident.by.type')) active @endif" href="{{ route('reports.incident.by.type') }}">Total Incidents by Type</a>
+            <a class="collapse-item @if(substr_count($currentRoute, 'reports.incident.victims')) active @endif" href="{{ route('reports.incident.victims') }}">Incident Victims</a>
+            <a class="collapse-item @if(substr_count($currentRoute, 'reports.victims.by.gender')) active @endif" href="{{ route('reports.victims.by.gender') }}">Victims By Gender</a>
+            <a class="collapse-item @if(substr_count($currentRoute, 'reports.perpetrators.by.gender')) active @endif" href="{{ route('reports.perpetrators.by.gender') }}">Perpetrators By Gender</a>
+            <a class="collapse-item @if(substr_count($currentRoute, 'reports.impact.by.incidents')) active @endif" href="{{ route('reports.impact.by.incidents') }}">Impact by Incidents</a>
+            <a class="collapse-item @if(substr_count($currentRoute, 'reports.incidents.over.days')) active @endif" href="{{ route('reports.incidents.over.days') }}">Incidents Over Days</a>
             
             {{-- <a class="collapse-item" href="{{ route('reports') }}">Charts</a> --}}
         </div>

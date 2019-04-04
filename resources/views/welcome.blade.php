@@ -15,16 +15,96 @@
 
         <!-- Content Row -->
         <div class="row">
-            <div class="map-canvas-container">
-                @if(config('settings.googleMapsAPIStatus'))
-                    <div id="map-canvas"></div>                                
-                @endif
-            </div>
+            <div class=""></div>
+                <div class="col-12 p-0 map-canvas-container">
+                    @if(config('settings.googleMapsAPIStatus'))
+                        <div id="map-canvas"></div>                                
+                    @endif
+                    <div class="fixed-bottom position-absolute w-100 bg-dark d-none d-sm-block ">
+                        
+                        <nav class="navbar navbar-expand navbar-light bg-white mb-0 static-bottom shadow">
+                            <!-- Bottom Navbar -->
+                            <ul class="navbar-nav ml-auto">
+                    
+                                
+                                <li class="nav-item dropdown no-arrow mx-1">
+                                <a class="nav-link" href="{{route('posts.data')}}">
+                                    <i class="fas fa-calendar text-gray-300"></i>
+                                    Total Incidents
+                                    <span class="badge badge-success badge-counter">231</span>
+                                </a>
+                                
+                                </li>
+                                
+                                <li class="nav-item dropdown no-arrow mx-1">
+                                    <a class="nav-link" href="{{route('organizations')}}">
+                                        <i class="fas fa-building text-gray-300"></i>
+                                        Civil Society Organizations
+                                        <span class="badge badge-warning badge-counter">6</span>
+                                    </a>
+                                
+                                </li>
+                                <li class="nav-item dropdown no-arrow mx-1">
+                                    <a class="nav-link" href="{{route('reports.incident.victims')}}">
+                                        <i class="fas fa-users text-gray-300"></i>
+                                        Total Victims
+                                        <span class="badge badge-info badge-counter">6</span>
+                                    </a>
+                                
+                                </li>
+                                <li class="nav-item dropdown no-arrow mx-1">
+                                    <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">
+                                        <i class="fas fa-map text-gray-300"></i>
+                                        Total Districts
+                                        <span class="badge badge-danger badge-counter">13</span>
+                                    </a>
+                                
+                                </li>
+                        
+                            </ul>
+                        </nav>
+
+                    </div>
+                    
+                </div>
         </div>
 
 </div>
         <!-- /.container-fluid -->
     
+
+<!-- Modal -->
+<div class="modal fade hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Districts Monitored - Chisankho2019</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <ol>
+                    <li>Lilongwe</li>
+                    <li>Nsanje</li>
+                    <li>Chikwawa</li>
+                    <li>Zomba</li>
+                    <li>Mangochi</li>
+                    <li>Koranga</li>
+                    <li>Mwanza</li>
+                    <li>Kasungu</li>
+                    <li>Rumphi</li>
+                    <li>Mulanje</li>
+                    <li>Mchinji</li>
+                    <li>Benga</li>
+            </ol>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+
 @endsection
 
 @section('footer_scripts')

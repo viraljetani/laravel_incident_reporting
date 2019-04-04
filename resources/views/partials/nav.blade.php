@@ -9,13 +9,6 @@
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
-
-        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-        <li class="nav-item dropdown no-arrow d-sm-none">
-            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-            </a>
-        </li>
         @guest
         <li><a class="nav-link" href="{{ route('login') }}">{{ trans('titles.login') }}</a></li>
         <li><a class="nav-link" href="{{ route('register') }}">{{ trans('titles.register') }}</a></li>
