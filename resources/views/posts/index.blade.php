@@ -16,8 +16,12 @@
                 <div class="alert alert-info">{{ Session::get('message') }}</div>
                 @endif
                 @if(isset($posts))
-                <h2 class="m-md-4 p-md-4 m-xs-2 p-xs-2"> {{ $posts->count() }} Reported Incidents  @role('admin') <a href="{{route('posts.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Import New </a> @endrole</h2>
-                
+                <div class="m-md-3 p-md-3 m-xs-2 p-xs-2 d-flex">
+                    <h2 class="text-dark mr-auto p-2"> {{ $posts->total() }} Reported Incidents  @role('admin') <a href="{{route('posts.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Import New </a> @endrole 
+                        
+                    </h2>
+                    <div class="p-2">{{ $posts->links() }}</div>
+                </div>
                     @foreach($posts as $key => $post)
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
@@ -41,7 +45,7 @@
                 @endif
                 
             </div>
-            <div class="col-xs-6 mx-auto w-100">{{ $posts->links() }}</div>
+            <div class="d-flex justify-content-center w-100">{{ $posts->links() }}</div>
 
 @endsection
 
