@@ -31,7 +31,7 @@
                                 <a class="nav-link" href="{{route('posts.data')}}">
                                     <i class="fas fa-calendar text-gray-300"></i>
                                     Total Incidents
-                                    <span class="badge badge-success badge-counter">231</span>
+                                    <span class="badge badge-success badge-counter">@if($posts){{$posts->count()}}@endif</span>
                                 </a>
                                 
                                 </li>
@@ -48,7 +48,7 @@
                                     <a class="nav-link" href="{{route('reports.incident.victims')}}">
                                         <i class="fas fa-users text-gray-300"></i>
                                         Total Victims
-                                        <span class="badge badge-info badge-counter">6</span>
+                                        <span class="badge badge-info badge-counter">@if($posts)@php echo $posts->pluck('male_victims')->sum()+$posts->pluck('female_victims')->sum(); @endphp @endif</span>
                                     </a>
                                 
                                 </li>
