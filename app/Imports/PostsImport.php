@@ -67,6 +67,8 @@ class PostsImport implements ToCollection
                     $p->responder_name = $post[$key-1]['Responder Name'] ?? "";
                     $p->feedback_on_response = $post[$key-1]['Feedback On Response'] ?? "";
                     $p->additional_follow_up = $post[$key-1]['Additional Follow Up'] ?? "";
+                    $p->no_go_zone = $post[$key-1]['No Go Zone'] ?? "";
+                    $p->who_are_perpitrators = $post[$key-1]['Who are the perpetrators of No Go Zones'] ?? "";
                     
                     $d = District::firstOrNew(['name' => ucwords($post[$key-1]['District'])]);
                     $d->save();
