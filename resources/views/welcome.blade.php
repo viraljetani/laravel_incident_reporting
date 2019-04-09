@@ -95,8 +95,9 @@
                     <li>Kasungu</li>
                     <li>Rumphi</li>
                     <li>Mulanje</li>
-                    <li>Mchinji</li>
-                    <li>Benga</li>
+                    <li>Salima</li>
+                    <li>Blantyre</li>
+                    <li>Chiradzulu</li>
             </ol>
             </div>
             <div class="modal-footer">

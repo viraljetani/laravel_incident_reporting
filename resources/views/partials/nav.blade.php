@@ -6,9 +6,9 @@
         <i class="fa fa-bars"></i>
     </button>
 
-
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
+        <li><a class="nav-link" href="{{ route('about') }}">About Us</a></li>
         @guest
         <li><a class="nav-link" href="{{ route('login') }}">{{ trans('titles.login') }}</a></li>
         <li><a class="nav-link" href="{{ route('register') }}">{{ trans('titles.register') }}</a></li>

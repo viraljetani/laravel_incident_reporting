@@ -25,7 +25,7 @@
                     @foreach($posts as $key => $post)
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                              <h6 class="m-0 font-weight-bold text-primary"> {{$post->postType->name}} <small> <span class="float-right d-inline-block dateTime font-weight-normal text-muted"> &nbsp;{{Carbon\Carbon::parse($post->post_date)->format('l jS F Y')}} - {{$post->post_time}} </span>   <span class="author float-right d-inline-block font-weight-normal text-muted"> Posted By <b>{{$post->cso_name}}</b> on </span> </small> </h6>
+                              <h6 class="m-0 font-weight-bold text-primary"> {{$post->postType->name}} <small> <span class="float-right d-inline-block dateTime font-weight-normal text-muted"> &nbsp;{{Carbon\Carbon::parse($post->post_date)->format('l jS F Y')}} - {{$post->post_time}} </span>   </small> </h6>
                             </div>
                             <div class="card-body p-4">
                                     
