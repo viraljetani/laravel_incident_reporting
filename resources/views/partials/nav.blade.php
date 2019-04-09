@@ -5,6 +5,9 @@
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
         <i class="fa fa-bars"></i>
     </button>
+    <span class="navbar-text d-md-block d-none text-light">
+            “An early warning and early response system for the 2019 General elections in Malawi.”
+    </span>
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
