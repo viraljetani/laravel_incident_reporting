@@ -34,6 +34,7 @@ Route::get('/organizations', 'OrganizationController@index')->name('organization
 Route::get('/map', 'WelcomeController@welcome')->name('welcome');
 
 Route::get('posts/data', 'PostController@index')->name('posts.data');
+Route::get('posts/{post}', 'PostController@show')->name('posts.show');
 Route::get('/reports/data', 'PostController@reports')->name('reports.data');
 Route::get('/maps/data', 'PostController@mapsData')->name('maps.data');
 
@@ -161,7 +162,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
             'update' => 'posts.update',
         ],
         
-        'except' => ['index'],
+        'except' => ['index','show'],
     ]);
     
     Route::model('posts', 'Post');
