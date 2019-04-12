@@ -36,8 +36,8 @@ Route::get('/organizations', 'OrganizationController@index')->name('organization
 
 Route::get('/map', 'WelcomeController@welcome')->name('welcome');
 
-Route::get('posts/data', 'PostController@index')->name('posts.data');
-Route::get('posts/{post}', 'PostController@show')->name('posts.show');
+
+
 Route::get('/reports/data', 'PostController@reports')->name('reports.data');
 Route::get('/maps/data', 'PostController@mapsData')->name('maps.data');
 
@@ -160,15 +160,17 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
     
     Route::resource('posts', 'PostController', [
         'names' => [
-            'create' => 'posts.create',
+            
             'edit' => 'posts.edit',
             'update' => 'posts.update',
         ],
         
-        'except' => ['index','show'],
+        'except' => ['index','show','create'],
     ]);
     
-    Route::model('posts', 'Post');
+    //Route::model('posts', 'Post');
 });
-
+Route::get('posts/data', 'PostController@index')->name('posts.data');
+Route::get('posts/create', 'PostController@create')->name('posts.create');
+Route::get('posts/{post}', 'PostController@show')->name('posts.show');
 Route::redirect('/php', '/phpinfo', 301);

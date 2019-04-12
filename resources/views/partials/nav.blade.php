@@ -11,14 +11,16 @@
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
-        <li><a class="nav-link" href="{{ route('about') }}">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About Us</a></li>
         @guest
-        <li><a class="nav-link" href="{{ route('login') }}">{{ trans('titles.login') }}</a></li>
-        <li><a class="nav-link" href="{{ route('register') }}">{{ trans('titles.register') }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">{{ trans('titles.login') }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">{{ trans('titles.register') }}</a></li>
         @else
+        @role('admin')
         <li class="nav-item">
-            @role('admin') <a href="{{route('posts.create')}}" class="nav-link"> Import Excel Data </a> @endrole
+             <a href="{{route('posts.create')}}" class="nav-link"> Import Excel Data </a> 
         </li>
+        @endrole
         <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}"
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
