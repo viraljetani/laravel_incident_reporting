@@ -370,7 +370,7 @@ class PostController extends Controller
             'plugins' => [
                 'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
-        ]);
+        ]); 
         //$chart->labels(['District']);
        
         
