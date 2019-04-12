@@ -397,18 +397,14 @@ class PostController extends Controller
         }
         //dd($data->values());
         $chart = new ReportChart;
-        $chart->labels(['Lilongwe','Mwanza','Nsanje','Mangochi']);
-        $chart->dataset('Male', 'bar', [34, 43, 23, 43])->options([
+        $chart->labels(['Police Called','Meeting Cancelled']);
+        $chart->dataset('Responses taken', 'pie', [34, 43])->options([
             'plugins' => [
                 'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
         ]);
         //$chart->labels(['District']);
-        $chart->dataset('Female', 'bar', [11, 24, 21,54])->options([
-            'plugins' => [
-                'colorschemes' => ['scheme' => 'tableau.Tableau10']
-            ],
-        ]);
+        
         
         /* $chart->labels($data1->keys());
         $chart->dataset('Perpetrators by Gender', 'bar', $data1->values())->options([
@@ -416,7 +412,7 @@ class PostController extends Controller
                 'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
         ]); */
-        $chart->displayAxes(true);
+        $chart->displayAxes(false);
         
 
         return view('posts.reports-responses-taken', compact('chart'));
