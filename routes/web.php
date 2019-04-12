@@ -25,8 +25,11 @@ Route::get('/reports/incidents-by-type', 'PostController@reportsIncidentByType')
 Route::get('/reports/incident-victims', 'PostController@reportsIncidentVictims')->name('reports.incident.victims');
 Route::get('/reports/incident-victims-gender', 'PostController@reportsVictimsGender')->name('reports.victims.by.gender');
 Route::get('/reports/perpetrators-by-gender', 'PostController@reportsPerpetratorsGender')->name('reports.perpetrators.by.gender');
+Route::get('/reports/perpetrators-of-incidents', 'PostController@reportsPerpetratorsIncidents')->name('reports.perpetrators.of.incidents');
 Route::get('/reports/impact-by-incidents', 'PostController@reportsImpactIncidents')->name('reports.impact.by.incidents');
 Route::get('/reports/incidents-over-days', 'PostController@reportsIncidentsDays')->name('reports.incidents.over.days');
+Route::get('/reports/location-of-incidents', 'PostController@reportsLocationOfIncidents')->name('reports.incidents.location');
+Route::get('/reports/responses-taken', 'PostController@reportsResponsesTaken')->name('reports.responses.taken');
 
 Route::get('/organizations', 'OrganizationController@index')->name('organizations');
 

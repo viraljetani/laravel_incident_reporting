@@ -258,6 +258,42 @@ class PostController extends Controller
 
     }
 
+    public function reportsPerpetratorsIncidents() {
+        $districts = District::withCount(['posts'])->get()->toArray();
+        //dd($districts);
+        $data1 = collect([]);
+        foreach($districts as $key => $district){
+            
+            $data1->put($district['name'] , $district['posts_count']);
+        }
+        //dd($data->values());
+        $chart = new ReportChart;
+        $chart->labels(['Lilongwe','Mwanza','Nsanje','Mangochi']);
+        $chart->dataset('Male', 'bar', [34, 43, 23, 43])->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
+            ],
+        ]);
+        //$chart->labels(['District']);
+        $chart->dataset('Female', 'bar', [11, 24, 21,54])->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
+            ],
+        ]);
+        
+        /* $chart->labels($data1->keys());
+        $chart->dataset('Perpetrators by Gender', 'bar', $data1->values())->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
+            ],
+        ]); */
+        $chart->displayAxes(true);
+        
+
+        return view('posts.reports-perpetrators-incidents',compact('chart'));
+
+    }
+
     public function reportsImpactIncidents() {
         // Pie Chart
         $victims = Post::select('victims', DB::raw('count(*) as posts_count'))
@@ -320,6 +356,78 @@ class PostController extends Controller
         
 
         return view('posts.reports-incident-over-days',compact('chart'));
+
+    }
+
+    public function reportsLocationOfIncidents() {
+        $districts = District::withCount(['posts'])->get()->toArray();
+        //dd($districts);
+        $data1 = collect([]);
+        foreach($districts as $key => $district){
+            
+            $data1->put($district['name'] , $district['posts_count']);
+        }
+        //dd($data->values());
+        $chart = new ReportChart;
+        $chart->labels(['Lilongwe','Mwanza','Nsanje','Mangochi']);
+        $chart->dataset('Male', 'bar', [34, 43, 23, 43])->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
+            ],
+        ]);
+        //$chart->labels(['District']);
+        $chart->dataset('Female', 'bar', [11, 24, 21,54])->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
+            ],
+        ]);
+        
+        /* $chart->labels($data1->keys());
+        $chart->dataset('Perpetrators by Gender', 'bar', $data1->values())->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
+            ],
+        ]); */
+        $chart->displayAxes(true);
+        
+
+        return view('posts.reports-incidents-locations',compact('chart'));
+
+    }
+
+    public function reportsResponsesTaken() {
+        $districts = District::withCount(['posts'])->get()->toArray();
+        //dd($districts);
+        $data1 = collect([]);
+        foreach($districts as $key => $district){
+            
+            $data1->put($district['name'] , $district['posts_count']);
+        }
+        //dd($data->values());
+        $chart = new ReportChart;
+        $chart->labels(['Lilongwe','Mwanza','Nsanje','Mangochi']);
+        $chart->dataset('Male', 'bar', [34, 43, 23, 43])->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
+            ],
+        ]);
+        //$chart->labels(['District']);
+        $chart->dataset('Female', 'bar', [11, 24, 21,54])->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
+            ],
+        ]);
+        
+        /* $chart->labels($data1->keys());
+        $chart->dataset('Perpetrators by Gender', 'bar', $data1->values())->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
+            ],
+        ]); */
+        $chart->displayAxes(true);
+        
+
+        return view('posts.reports-responses-taken', compact('chart'));
 
     }
 
