@@ -22,7 +22,31 @@
 
                 <!-- Earnings (Monthly) Card Example -->
                 <div class="col-sm-12 mb-4">
-                        <p>The Chisankho 2019 is an early warning  and early response system for the 2019 Tripartite elections in Malawi.</p> <blockquote class="blockquote">"Chisankho means Elections".</blockquote> <p>The Chisankho initiative is implemented by IFES with support from USAID and DFID. Six civil society organization have deployed observers in 13 key districts considered  as hotspots around the elections. IFES and the 6 civil society organisations are working closely with the Multiparty Liason committees in the 13  districts. The districts are Karonga, Rumphi, Lilongwe, Salima, Mulanje, Nsanje, Chikhwawa, Kasungu, Mwanza, Blantyre, Chiradzulu, Zomba, Mangochi.</p>
+                        <p>Chisankho 2019 is a digital platform that displays electoral conflict early warning and response
+                        data as is collected first hand and almost in real time by a network of over 70 monitors spread in
+                        13 electoral conflict prone districts throughout Malawi. The 13 districts are Nsanje, Chikwawa,
+                        Rumphi, Karonga, Lilongwe, Salima, Mulanje, Zomba, Mangochi, Mwanza, Chiradzulu,
+                        Blantyre and Kasungu.</p>
+                        <p>The platform is a core component of the International Foundation for Electoral System’s (IFES)
+                        Malawi Electoral Integrity Program (MEIP), supported by USAID and DFID. Through this
+                        program, IFES is running a conflict Early Warning Early Response (EWER) program that entails
+                        supporting six civil society organizations (CCSOs) and their network of monitors to collect
+                        electoral conflict early warning data in the13 districts and intervene to manage electoral conflicts
+                        primarily through the district Multi-Party Liaison Committee (MPLCs) structures. The six CSOs
+                        are Youth and Society (YAS); International Group Association (IGA) Malawi; National
+                        Elections Systems Trust (NEST); Tiphedzane Community Support (TICOSO) and Catholic
+                        Commission for Justice and Peace (CCJP) Chikwawa Diocese and the National Office of CCJP
+                        as well.</p>
+                        <p>The early warning data and subsequent mitigative interventions are displayed on the Chisankho
+                        2019 digital platform. The aim is to present to the public and duty bearers including the Malawi
+                        National Police Service, Malawi Electoral Commission (MEC), National Election Consultative
+                        Forum (NECOF), media and other actors with reliable data and evidence on the electoral conflict
+                        dynamics in the 13 districts so that where necessary, these stakeholders can use the data for
+                        further interventions or for documentation and knowledge purposes.</p>
+                        <p>Data to the platform is primarily sent by the network of monitors through the CSOs. However, in
+                        case citizens witness cases of interest in their respective districts, they are encouraged to reach
+                        out either to the monitors, the CSOs or the respective MPLC members. These actors will verify
+                        and send the early warning indicators as soon as possible to the platform.</p>
                 </div>
 
             </div>

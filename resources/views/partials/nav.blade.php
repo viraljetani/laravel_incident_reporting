@@ -6,7 +6,8 @@
         <i class="fa fa-bars"></i>
     </button>
     <span class="navbar-text d-md-block d-none text-light">
-            “An early warning and early response system for the 2019 General elections in Malawi.”
+            “A conflict Early Warning and Response System for the 2019 General Elections in
+            Malawi.”
     </span>
 
     <!-- Topbar Navbar -->
