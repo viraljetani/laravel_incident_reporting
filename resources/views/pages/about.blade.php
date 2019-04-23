@@ -52,30 +52,15 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col-sm-8">
-                        <h4 class="text-dark">FAQ (Frequently Asked Questions)</h4>
-
-                        <p>Is the Chisankho initiative?</p>
-                        <p>Who is implementing the Chisankho 2019 Initiative?</p>
-                        
-                        <p>Which civil society organisations are involved?</p>
-                        
-                        <p>What is the mode of data collection?</p>
-                        
-                        <p>Who sends data?</p>
-                        
-                        <p>How can citizens send information on incidents through observers?</p>
-                        
-
-                </div>
+                
                 <div class="col-sm-4">
                     <address>
                             <h4 class="text-dark">Contact:</h4>
-                            IFES <br>
-                            P.O. Box  xyz <br>
+                            International Foundation for Electoral Systems <br>
+                            P.O. Box 45 <br>
                             Lilongwe. <br>
                             Email: info@ifes.org <br>
-                            Phone:+265 888 777 999 <br>
+                            Phone:+265 888 437 481 <br>
                             
                     </address>
                 </div>
