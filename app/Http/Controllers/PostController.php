@@ -384,31 +384,24 @@ class PostController extends Controller
     }
 
     public function reportsResponsesTaken() {
-        $districts = District::withCount(['posts'])->get()->toArray();
-        //dd($districts);
+        $districts = Post::select('nature_of_response', DB::raw('count(*) as posts_count'))
+        ->where('nature_of_response','!=','')->groupBy('nature_of_response')
+        ->get()->toArray();
         $data1 = collect([]);
         foreach($districts as $key => $district){
             
-            $data1->put($district['name'] , $district['posts_count']);
+            $data1->put($district['nature_of_response'] , $district['posts_count']);
         }
         //dd($data->values());
         $chart = new ReportChart;
-        $chart->labels(['Police Called','Meeting Cancelled']);
-        $chart->dataset('Responses taken', 'pie', [34, 43])->options([
+        
+        $chart->labels($data1->keys());
+        $chart->dataset('Nature of Responses Taken', 'bar', $data1->values())->options([
             'plugins' => [
                 'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
-        ]);
-        //$chart->labels(['District']);
-        
-        
-        /* $chart->labels($data1->keys());
-        $chart->dataset('Perpetrators by Gender', 'bar', $data1->values())->options([
-            'plugins' => [
-                'colorschemes' => ['scheme' => 'tableau.Tableau10']
-            ],
-        ]); */
-        $chart->displayAxes(false);
+        ]); 
+        $chart->displayAxes(true);
         
 
         return view('posts.reports-responses-taken', compact('chart'));
