@@ -359,30 +359,23 @@ class PostController extends Controller
     }
 
     public function reportsLocationOfIncidents() {
-        $districts = District::withCount(['posts'])->get()->toArray();
+        $districts = Post::select('where_happened', DB::raw('count(*) as posts_count'))
+        ->where('where_happened','!=','')->groupBy('where_happened')
+        ->get()->toArray();
         //dd($districts);
         $data1 = collect([]);
         foreach($districts as $key => $district){
             
-            $data1->put($district['name'] , $district['posts_count']);
+            $data1->put($district['where_happened'] , $district['posts_count']);
         }
         //dd($data->values());
-        $chart = new ReportChart;
-        $chart->labels(['Public Space','Private Office']);
-        $chart->dataset('Locations', 'bar', [34, 43])->options([
+        $chart = new ReportChart;        
+        $chart->labels($data1->keys());
+        $chart->dataset('Locations of Incidents', 'bar', $data1->values())->options([
             'plugins' => [
                 'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
-        ]); 
-        //$chart->labels(['District']);
-       
-        
-        /* $chart->labels($data1->keys());
-        $chart->dataset('Perpetrators by Gender', 'bar', $data1->values())->options([
-            'plugins' => [
-                'colorschemes' => ['scheme' => 'tableau.Tableau10']
-            ],
-        ]); */
+        ]);
         $chart->displayAxes(true);
         
 
