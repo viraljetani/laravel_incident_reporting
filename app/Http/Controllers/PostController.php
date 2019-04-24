@@ -196,7 +196,7 @@ class PostController extends Controller
         // Pie Chart
         $victims = Post::select('victims', DB::raw('count(*) as posts_count'))
         ->groupBy('victims')
-        ->get()->toArray();;
+        ->get()->toArray();
         //dd($victims);
         $data3 = collect([]);
         foreach($victims as $key => $victim){
@@ -259,30 +259,33 @@ class PostController extends Controller
     }
 
     public function reportsPerpetratorsIncidents() {
-        $districts = District::withCount(['posts'])->get()->toArray();
+        //$districts = District::withCount(['posts'])->get()->toArray();
+        $districts = Post::select('responsible', DB::raw('count(*) as posts_count'))
+        ->where('responsible','!=','')->groupBy('responsible')
+        ->get()->toArray();
         //dd($districts);
         $data1 = collect([]);
         foreach($districts as $key => $district){
             
-            $data1->put($district['name'] , $district['posts_count']);
+            $data1->put($district['responsible'] , $district['posts_count']);
         }
         //dd($data->values());
         $chart = new ReportChart;
-        $chart->labels(['Political Party Supporters','Candidates']);
-        $chart->dataset('Perpetrators', 'bar', [34, 43])->options([
-            'plugins' => [
-                'colorschemes' => ['scheme' => 'tableau.Tableau10']
-            ],
-        ]);
-        //$chart->labels(['District']);
-        
-        
-        /* $chart->labels($data1->keys());
-        $chart->dataset('Perpetrators by Gender', 'bar', $data1->values())->options([
+        //$chart->labels(['Political Party Supporters','Candidates']);
+        /*$chart->dataset('Perpetrators', 'bar', [34, 43])->options([
             'plugins' => [
                 'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
         ]); */
+        //$chart->labels(['District']);
+        
+        
+        $chart->labels($data1->keys());
+        $chart->dataset('Perpetrators of Incidents', 'bar', $data1->values())->options([
+            'plugins' => [
+                'colorschemes' => ['scheme' => 'tableau.Tableau10']
+            ],
+        ]);
         $chart->displayAxes(true);
         
 
