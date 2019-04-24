@@ -26,7 +26,7 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
 
     }
-
+////////// below funciton is a redundant function /// can be removed later on
     public function reports() {
 
         /* $districts = District::with('posts')
