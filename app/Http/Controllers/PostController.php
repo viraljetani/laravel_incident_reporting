@@ -194,30 +194,16 @@ class PostController extends Controller
 
     public function reportsVictimsGender() {
         // Pie Chart
-        $victims = Post::select('victims', DB::raw('count(*) as posts_count'))
-        ->groupBy('victims')
-        ->get()->toArray();
-        //dd($victims);
-        $data3 = collect([]);
-        foreach($victims as $key => $victim){
-            
-            $data3->put($victim['victims'] , $victim['posts_count']);
-        }
-        //dd($data3->values());
+        $maleVictims = Post::sum('male_victims');
+        $femaleVictims = Post::sum('female_victims');
+       
         $chart3 = new ReportChart;
         $chart3->labels(['Male','Female']);
-        $chart3->dataset('Victims By Gender', 'pie', [34, 43])->options([
+        $chart3->dataset('Victims By Gender', 'pie', [intval($maleVictims), intval($femaleVictims)])->options([
             'plugins' => [
                 'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
         ]);
-        /* $chart3->labels($data3->keys());
-        $chart3->dataset('Total % of Incidents by Incident Types', 'pie', $data3->values())->options([
-            'plugins' => [
-                'colorschemes' => ['scheme' => 'tableau.Tableau10']
-            ],
-        ]); */
-        $chart3->title("Victims By Gender");
         $chart3->displayAxes(false,false);
         return view('posts.reports-victim-by-gender',compact('chart3'));
     }
