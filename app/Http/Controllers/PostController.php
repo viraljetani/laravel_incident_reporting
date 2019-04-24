@@ -171,8 +171,8 @@ class PostController extends Controller
     public function reportsIncidentVictims() {
         // Pie Chart
         $victims = Post::select('victims', DB::raw('count(*) as posts_count'))
-        ->groupBy('victims')
-        ->get()->toArray();;
+        ->where('victims','!=','')->groupBy('victims')
+        ->get()->toArray();
         //dd($victims);
         $data3 = collect([]);
         foreach($victims as $key => $victim){
@@ -292,29 +292,29 @@ class PostController extends Controller
 
     public function reportsImpactIncidents() {
         // Pie Chart
-        $victims = Post::select('victims', DB::raw('count(*) as posts_count'))
-        ->groupBy('victims')
-        ->get()->toArray();;
+        $victims = Post::select('impact', DB::raw('count(*) as posts_count'))
+        ->where('impact','!=','')->groupBy('impact')
+        ->get()->toArray();
         //dd($victims);
         $data3 = collect([]);
         foreach($victims as $key => $victim){
             
-            $data3->put($victim['victims'] , $victim['posts_count']);
+            $data3->put($victim['impact'] , $victim['posts_count']);
         }
         //dd($data3->values());
         $chart3 = new ReportChart;
-        $chart3->labels(['Campain Rally Disrupted', 'Voting Cancelled']);
-        $chart3->dataset('Incidents Impact', 'pie', [1, 24])->options([
+        //$chart3->labels(['Campain Rally Disrupted', 'Voting Cancelled']);
+        /*$chart3->dataset('Incidents Impact', 'pie', [1, 24])->options([
             'plugins' => [
                 'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
-        ]);
-       /*  $chart3->labels($data3->keys());
-        $chart3->dataset('Total % of Incidents by Incident Types', 'pie', $data3->values())->options([
+        ]);*/
+      $chart3->labels($data3->keys());
+        $chart3->dataset('Incidents Impact', 'pie', $data3->values())->options([
             'plugins' => [
                 'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
-        ]); */
+        ]); 
         $chart3->title("Impact of Incidents");
         $chart3->displayAxes(false,false);
         return view('posts.reports-impact-incidents',compact('chart3'));
