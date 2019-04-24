@@ -324,33 +324,23 @@ class PostController extends Controller
     }
 
     public function reportsIncidentsDays() {
-        $districts = District::withCount(['posts'])->get()->toArray();
-        //dd($districts);
+        $districts = Post::select('post_date', DB::raw('count(*) as posts_count'))
+        ->where('post_date','!=','')->groupBy('post_date')->orderBy('post_date')
+        ->get()->toArray();
         $data1 = collect([]);
         foreach($districts as $key => $district){
             
-            $data1->put($district['name'] , $district['posts_count']);
+            $data1->put($district['post_date'] , $district['posts_count']);
         }
-        //dd($data->values());
         $chart = new ReportChart;
 
-        //$chart = new SampleChart;
-        $chart->labels(['12/2/19', '13/2/19', '14/2/19', '15/2/19']);
-        $chart->dataset('Incidents', 'line', [1, 24, 32, 41])->options([
+        $chart->labels($data1->keys());
+        $chart->dataset('Incidents by days', 'line', $data1->values())->options([
             'plugins' => [
                 'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
-        ]);
-        //$chart->dataset('My dataset 2', 'line', [4, 3, 2, 1]);
-        //$chart->labels($data1->keys());
-       /*  $chart->dataset('Incidents over Dates', 'line', $data1->values())->options(['backgroundColor' => [
-            
-            
-        ],
-        'borderColor' => [
-            
-            
-        ]]); */
+        ]); 
+        
         $chart->displayAxes(true);
         
 
