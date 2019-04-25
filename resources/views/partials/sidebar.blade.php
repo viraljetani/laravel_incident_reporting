@@ -61,9 +61,9 @@
     <li class="nav-item">
         <a class="nav-link less-padding  @if(substr_count($currentRoute, 'reports.perpetrators.of.incidents')) text-warning @endif" href="{{ route('reports.perpetrators.of.incidents') }}"><span>Perpetrators Of Incidents</span></a>
     </li>
-    <!--li class="nav-item">
+    <li class="nav-item">
         <a class="nav-link less-padding  @if(substr_count($currentRoute, 'reports.perpetrators.by.gender')) text-warning @endif" href="{{ route('reports.perpetrators.by.gender') }}"><span>Perpetrators By Gender</span></a>
-    </li-->
+    </li>
     <li class="nav-item">
         <a class="nav-link less-padding  @if(substr_count($currentRoute, 'reports.impact.by.incidents')) text-warning @endif" href="{{ route('reports.impact.by.incidents') }}"><span>Impact of Incidents</span></a>
     </li>

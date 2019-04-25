@@ -209,23 +209,34 @@ class PostController extends Controller
     }
 
     public function reportsPerpetratorsGender() {
-        $districts = District::withCount(['posts'])->get()->toArray();
+        $districts = District::get()->toArray();
         //dd($districts);
         $data1 = collect([]);
+        $data2 = collect([]);
+        $labels = collect([]);
+        $perpetrators = array();
         foreach($districts as $key => $district){
+            //dd($district);
+            $posts = Post::where('district_id',$district['id'])->get();
             
-            $data1->put($district['name'] , $district['posts_count']);
+            $malePerpetrators = @$posts->sum('male_perpetrators') ?? 0;
+            $femalePerpetrators = @$posts->sum('female_perpetrators') ?? 0;
+            //dd(intval($malePerpetrators));
+            $labels->put($district['name'],$district['name']);
+            $data1->put($district['name'],$malePerpetrators);
+            $data2->put($district['name'],$femalePerpetrators);
+            //dd($data1);
         }
-        //dd($data->values());
+        //dd($data2->all());
         $chart = new ReportChart;
-        $chart->labels(['Lilongwe','Mwanza','Nsanje','Mangochi']);
-        $chart->dataset('Male', 'bar', [34, 43, 23, 43])->options([
+        $chart->labels($labels->values());
+        $chart->dataset('Male', 'bar', $data1->values())->options([
             'plugins' => [
                 'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
         ]);
         //$chart->labels(['District']);
-        $chart->dataset('Female', 'bar', [11, 24, 21,54])->options([
+        $chart->dataset('Female', 'bar', $data2->values())->options([
             'plugins' => [
                 'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
