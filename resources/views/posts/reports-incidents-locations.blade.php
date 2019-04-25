@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
 @section('template_title')
-	Locations of Incidents
+	Location of Incidents
 @endsection
 
 @section('content')
     <div class="container-fluid mt-4">
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-900">Locations Of Incidents</h1>
+                <h1 class="h3 mb-0 text-gray-900">Location Of Incidents</h1>
             </div>
             
 			<div class="col-lg-12 p-5">
