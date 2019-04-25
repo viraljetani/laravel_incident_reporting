@@ -347,7 +347,7 @@ class PostController extends Controller
         //dd($data->values());
         $chart = new ReportChart;        
         $chart->labels($data1->keys());
-        $chart->dataset('Locations of Incidents', 'bar', $data1->values())->options([
+        $chart->dataset('Location of Incidents', 'bar', $data1->values())->options([
             'plugins' => [
                 'colorschemes' => ['scheme' => 'tableau.Tableau10']
             ],
