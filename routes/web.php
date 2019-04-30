@@ -163,9 +163,11 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
             
             'edit' => 'posts.edit',
             'update' => 'posts.update',
+            
+            
         ],
         
-        'except' => ['index','show','create'],
+        'except' => ['index','show','create','destroy'],
     ]);
     
     //Route::model('posts', 'Post');
@@ -173,4 +175,5 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
 Route::get('posts/data', 'PostController@index')->name('posts.data');
 Route::get('posts/create', 'PostController@create')->name('posts.create');
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');
+Route::get('posts/delete/{post}', 'PostController@destroy')->name('posts.destroy');
 Route::redirect('/php', '/phpinfo', 301);

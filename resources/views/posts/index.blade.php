@@ -39,7 +39,8 @@
                                     <hr />
                                     <p class="post-location text-muted float-left"><small>{{$post->location}}</small> <br>
                                     <i class="fa fa-map-pin"></i> {{$post->district->name}}</p>
-                                    <a href="{{ route('posts.show',$post)}}" class="float-right pt-3">See more details about this Incident</a>
+                                    <a href="{{ route('posts.show',$post)}}" class="float-right pt-3">See more details about this Incident</a>  
+                                    @role('admin') <a href="{{ route('posts.destroy',$post)}}" class="btn float-right text-danger pt-3">Delete</a> @endrole
                             </div>
                         </div>
                     @endforeach
