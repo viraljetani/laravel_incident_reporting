@@ -27,7 +27,7 @@
         <span>Map</span>
         </a>
         
-    </li>
+    </li>@role('admin')
     <li class="nav-item @if(substr_count($currentRoute, 'posts')) active @endif">
             <a class="nav-link @if(substr_count($currentRoute, 'posts')) text-warning @endif" href="{{ route('posts.data') }}"">
             <i class="fas fa-fw fa-database"></i>
@@ -35,7 +35,7 @@
             </a>
             
     </li>
-
+    @endrole
     <!-- Divider -->
     <hr class="sidebar-divider">
 
