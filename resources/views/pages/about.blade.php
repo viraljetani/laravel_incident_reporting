@@ -21,7 +21,7 @@
             <div class="row">
 
                 <!-- Earnings (Monthly) Card Example -->
-                <div class="col-sm-12 mb-4">
+                <div class="col-sm-9 mb-4">
                         <p>Chisankho 2019 is a digital platform that displays electoral conflict early warning and response
                         data as is collected first hand and almost in real time by a network of over 70 monitors spread in
                         13 electoral conflict prone districts throughout Malawi. The 13 districts are Nsanje, Chikwawa,
@@ -47,6 +47,15 @@
                         case citizens witness cases of interest in their respective districts, they are encouraged to reach
                         out either to the monitors, the CSOs or the respective MPLC members. These actors will verify
                         and send the early warning indicators as soon as possible to the platform.</p>
+
+                        
+                </div>
+
+                <div class="col-sm-3 mb-4">
+                <img src="{{URL::to('images/IFES_logo_BSMP_Malawi.jpg')}}" width="190" class="img-fluid p-3" />
+                <img src="{{URL::to('images/USAID_logo_BSMP_Malawi.jpg')}}" width="190" class="img-fluid p-3" />
+                <img src="{{URL::to('images/UKAID_logo_BSMP_Malawi.jpg')}}" width="190" class="img-fluid p-3" />
+                
                 </div>
 
             </div>
