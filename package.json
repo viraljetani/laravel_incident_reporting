@@ -26,7 +26,7 @@
         "dropzone": "^5.4.0",
         "hideshowpassword": "^2.1.1",
         "laravel-echo": "^1.3.5",
-        "moment": "^2.21.0",
+        "moment": "^2.29.4",
         "password-strength-meter": "^1.2.1",
         "pusher-js": "^4.2.2",
         "@fortawesome/fontawesome-free": "^5.8.1"
